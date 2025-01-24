@@ -1,0 +1,78 @@
+<div class="w-100 d-flex justify-content-center">
+  <div class="w-90 d-flex border-right border-black gap-2">
+    <div class="w-20">
+      <div class="border border-secondary p-3 rounded-3">
+        <div>
+          <h5 class="font-bold">Theo giá</h5>
+          <ul class="list-unstyled d-flex flex-column">
+            <li class="p-2 li-hover">
+              <a href="" class="text-decoration-none text-secondary-emphasis"
+                >Dưới 350.000đ</a
+              >
+            </li>
+            <li class="p-2 li-hover">
+              <a href="" class="text-decoration-none text-secondary-emphasis"
+                >Từ 350.000đ - 750.000đ</a
+              >
+            </li>
+            <li class="p-2 li-hover">
+              <a href="" class="text-decoration-none text-secondary-emphasis"
+                >Trên 750.000đ</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="w-75">
+          <h5 class="font-bold">Kích thước</h5>
+          <div class="grid-col-3">
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >S</a
+            >
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >M</a
+            >
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >L</a
+            >
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >XL</a
+            >
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >2XL</a
+            >
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >3XL</a
+            >
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >4XL</a
+            >
+            <a
+              href=""
+              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
+              >5XL</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-100 grid-col-4">
+      @for (item of [1,2,3,4,6,7,8,8]; track $index) {
+      <app-card-product></app-card-product>
+      }
+    </div>
+  </div>
+</div>

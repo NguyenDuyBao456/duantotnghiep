@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.w-90 {
+  width: 90%;
+}
+.h-72 {
+  height: 72px;
+}
+.w-10 {
+  width: 10%;
+}
+
+.font-25 {
+  font-size: 25px;
+}

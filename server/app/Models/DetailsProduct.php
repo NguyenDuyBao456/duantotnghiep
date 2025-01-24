@@ -11,5 +11,5 @@ class DetailsProduct extends Model
 
     use HasFactory;
 
-    protected $fillable = ["size", "color", "material"];
+    protected $fillable = ["size", "color", "material", "price"];
 }
