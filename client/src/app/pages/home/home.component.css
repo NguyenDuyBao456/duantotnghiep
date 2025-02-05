@@ -1,8 +1,1 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Đảm bảo body chiếm toàn bộ chiều cao */
-}
-.content {
-  flex: 1;
-}
+

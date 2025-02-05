@@ -1,0 +1,85 @@
+<div class="w-100 d-flex justify-content-center">
+  <div class="w-90 d-flex gap-2">
+    <div class="w-75 p-3" style="background-color: whitesmoke">
+      <table class="w-100">
+        @for (item of [1,2,3,4]; track $index) {
+        <tr>
+          <th>
+            <img
+              src="https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-polo-nam-APM7459-VAG%20(1).JPG"
+              alt=""
+              height="100"
+            />
+          </th>
+          <th>
+            <p>Ao poly nam</p>
+          </th>
+          <th>
+            <p>199.000 đ</p>
+          </th>
+          <th>
+            <input
+              type="number"
+              name=""
+              id=""
+              value="1"
+              min="1"
+              class=""
+              style="width: 50px"
+            />
+          </th>
+          <th>
+            <i class="fa-solid fa-trash"></i>
+          </th>
+        </tr>
+        }
+      </table>
+    </div>
+    <div class="w-25 p-3" style="background-color: whitesmoke">
+      <div>
+        <h4>Thông tin khách hàng</h4>
+        <div class="mb-22">
+          <label for="exampleInput" class="form-label" style="font-size: 14px"
+            >Họ tên</label
+          >
+          <input type="email" class="form-control" id="exampleInput" />
+        </div>
+        <div class="mb-22">
+          <label for="exampleInput" class="form-label" style="font-size: 14px"
+            >Địa chỉ</label
+          >
+          <input type="email" class="form-control" id="exampleInput" />
+        </div>
+        <div class="mb-2">
+          <label for="exampleInput" class="form-label" style="font-size: 14px"
+            >Số điện thoại</label
+          >
+          <input type="email" class="form-control" id="exampleInput" />
+        </div>
+
+        <h4>Thông tin thanh toán</h4>
+        <br />
+
+        <div class="d-flex justify-content-between">
+          <p>Tổng giá trị sản phẩm:</p>
+          <p>199.000 đ</p>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <p>Phí vận chuyển:</p>
+          <p>0đ</p>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <p>Tổng thanh toán:</p>
+          <p>199.000 đ</p>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary">Thanh toán VNpay</button>
+          <button class="btn btn-danger">Thanh toán Momo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

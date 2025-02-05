@@ -1,1 +1,45 @@
+.menu-1 {
+  list-style: none;
+  display: block;
+}
 
+.submenu {
+  display: none;
+  position: absolute;
+  list-style: none;
+  background-color: black;
+  width: 100%;
+  padding: 10px;
+  left: 0px;
+  top: 72px;
+  z-index: 10;
+}
+
+.submenu li a {
+  text-decoration: none;
+}
+.submenu li {
+  padding: 10px;
+}
+.menu-1:hover .submenu {
+  display: block;
+}
+
+.subcategories ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.subcategories ul li a {
+  color: gray;
+  font-size: 14px;
+}
+.subcategories a {
+  color: white;
+  font-weight: 600;
+}
+.subcategories ul li {
+  padding: 0;
+  margin: 0;
+  padding: 10px 0px;
+}
