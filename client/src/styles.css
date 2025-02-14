@@ -12,3 +12,7 @@
 .font-25 {
   font-size: 25px;
 }
+
+body {
+  overflow-x: hidden;
+}

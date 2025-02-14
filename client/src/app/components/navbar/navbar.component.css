@@ -30,7 +30,7 @@
   padding: 0;
   margin: 0;
 }
-.subcategories ul li a {
+.subcategories a {
   color: gray;
   font-size: 14px;
 }

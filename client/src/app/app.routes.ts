@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 export const routes: Routes = [
   {
@@ -30,5 +31,13 @@ export const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+  },
+  {
+    path: 'details/:id',
+    component: DetailsComponent,
+  },
+  {
+    path: '404',
+    component: NotfoundComponent,
   },
 ];

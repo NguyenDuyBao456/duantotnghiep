@@ -1,59 +1,43 @@
+@if (loading) {
+<h2 class="text-center">Loading...</h2>
+} @else {
 <div class="w-100 d-flex justify-content-center">
   <div class="w-90 d-flex gap-5">
-    <div class="w-50">
-      <swiper-container slides-per-view="1" navigation="true" loop="true">
-        <swiper-slide class="d-flex justify-content-center">
-          <img
-            src="https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-polo-nam-APM7459-VAG%20(1).JPG"
-            alt=""
-            class="w-75"
-          />
-        </swiper-slide>
-        <swiper-slide class="d-flex justify-content-center">
-          <img
-            src="https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-polo-nam-APM7459-VAG%20(2).JPG"
-            alt=""
-            class="w-75"
-          />
-        </swiper-slide>
-        <swiper-slide class="d-flex justify-content-center">
-          <img
-            src="https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-polo-nam-APM7459-VAG%20(6).JPG"
-            alt=""
-            class="w-75"
-          />
-        </swiper-slide>
-        <swiper-slide class="d-flex justify-content-center">
-          <img
-            src="https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-polo-nam-APM7459-VAG%20(7).JPG"
-            alt=""
-            class="w-75"
-          />
-        </swiper-slide>
-      </swiper-container>
+    <div class="w-50 bg-light">
+      <div class="d-flex justify-content-center">
+        <img
+          src="http://localhost:8000/img/{{ details.img }}"
+          alt=""
+          class="w-75"
+        />
+      </div>
     </div>
 
-    <div class="w-50 p-3 d-flex flex-column gap-3">
-      <h6>Áo Poly Nam</h6>
-      <h2 class="text-danger">199.000 đ</h2>
-      <span>Màu sắc: Vàng</span>
-      <span>Kích thước: 3XL</span>
+    <div class="w-50 p-3 d-flex flex-column gap-3 rounded-2">
+      <h6>{{ details.name }}</h6>
+      <h2 class="text-danger">{{ details.price | number }} đ</h2>
+      <!-- <span>Màu sắc: Vàng</span>
+      <span>Kích thước: 3XL</span> -->
       <span>Số lượng:</span>
-      <form action="" class="d-flex gap-2">
+      <div class="d-flex gap-2">
         <input
           type="number"
           name=""
           id=""
+          [(ngModel)]="qty"
           min="1"
           value="1"
           class="p-2 rounded-2"
           style="width: 100px"
         />
-        <button class="btn border border-secondary w-full">
+        <button
+          class="btn border border-secondary w-full"
+          (click)="addToCart({ details , qty})"
+        >
           Thêm vào giỏ hàng
         </button>
         <button class="btn btn-warning text-light">Mua Ngay</button>
-      </form>
+      </div>
 
       <div class="mt-3">
         <p><b>Miễn phí vận chuyển:</b> Đơn hàng từ 498k</p>
@@ -65,3 +49,4 @@
     </div>
   </div>
 </div>
+}

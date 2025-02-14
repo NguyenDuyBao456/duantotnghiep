@@ -5,73 +5,51 @@
         <div>
           <h5 class="font-bold">Theo giá</h5>
           <ul class="list-unstyled d-flex flex-column">
-            <li class="p-2 li-hover">
-              <a href="" class="text-decoration-none text-secondary-emphasis"
-                >Dưới 350.000đ</a
-              >
+            <li class="p-2 li-hover" (click)="filterPrice(0, 350000)">
+              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
+                Dưới 350.000đ
+              </p>
             </li>
-            <li class="p-2 li-hover">
-              <a href="" class="text-decoration-none text-secondary-emphasis"
-                >Từ 350.000đ - 750.000đ</a
-              >
+            <li class="p-2 li-hover" (click)="filterPrice(350000, 750000)">
+              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
+                Từ 350.000đ - 750.000đ
+              </p>
             </li>
-            <li class="p-2 li-hover">
-              <a href="" class="text-decoration-none text-secondary-emphasis"
-                >Trên 750.000đ</a
-              >
+            <li class="p-2 li-hover" (click)="filterPrice(750000, 9999999999)">
+              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
+                Trên 750.000đ
+              </p>
             </li>
           </ul>
         </div>
-        <div class="w-75">
-          <h5 class="font-bold">Kích thước</h5>
-          <div class="grid-col-3">
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >S</a
-            >
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >M</a
-            >
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >L</a
-            >
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >XL</a
-            >
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >2XL</a
-            >
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >3XL</a
-            >
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >4XL</a
-            >
-            <a
-              href=""
-              class="text-decoration-none text-black border border-secondary rounded-3 text-center p-2 a-hover"
-              >5XL</a
-            >
-          </div>
+        <div>
+          <h5 class="font-bold">Danh mục</h5>
+          <ul
+            class="list-unstyled d-flex flex-column"
+            style="height: 300px; overflow: auto"
+          >
+            @for (item of subcategory; track $index) {
+            <li class="p-2 li-hover" (click)="filterSubCategory(item.id)">
+              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
+                {{ item.name }}
+              </p>
+            </li>
+            }
+          </ul>
         </div>
       </div>
     </div>
-    <div class="w-100 grid-col-4">
-      @for (item of [1,2,3,4,6,7,8,8]; track $index) {
-      <app-card-product></app-card-product>
+    <div class="row w-100 d-flex g-3" style="height: fit-content">
+      @for (product of products; track $index) {
+      <div class="col-3">
+        <app-card-product [product]="product"></app-card-product>
+      </div>
+      } @if (check) {
+      <div class="d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary w-25" (click)="viewMore()">
+          Xem thêm
+        </button>
+      </div>
       }
     </div>
   </div>

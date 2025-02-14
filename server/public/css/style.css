@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Main Layout */
+/* .container {
+    display: flex;
+    min-height: 100vh;
+} */
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+}
+
+/* Main Content */
+.content {
+    width: 80%;
+    padding: 20px;
+}
+
+/* Product Table */
+.product-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-table th {
+    background-color: #f4f4f4;
+}
+
+.btn {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn.edit {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn.delete {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Add Product Button */
+.add-product-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border: none;
+    display: inline-block;
+}
+
+/* Edit Form */
+.edit-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.edit-form h2 {
+    margin-bottom: 15px;
+}
+
+.edit-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edit-form input,
+.edit-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.save-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product-preview {
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+.form-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-label {
+    font-weight: bold;
+    color: #555;
+}
+.form-control {
+    border-radius: 5px;
+}
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    background-color: #218838;
+}
+button a {
+    text-decoration: none;
+    color: #fff;
+}
+button:hover a {
+    color: #000;
+}
+.table-container {
+    width: 80%;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th,
+.user-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.user-table th {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.user-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.user-table td {
+    text-align: center;
+}
+.product-table td {
+    vertical-align: top;
+}
+
+.product-table td:nth-child(5) {
+    max-width: 150px; /* Đặt chiều rộng tối đa cho cột */
+    overflow: hidden; /* Ẩn phần vượt quá */
+    white-space: nowrap; /* Không xuống dòng */
+    text-overflow: ellipsis; /* Thêm "..." khi văn bản bị cắt */
+}
+
+/* dasdsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */

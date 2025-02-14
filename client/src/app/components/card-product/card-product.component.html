@@ -1,11 +1,9 @@
 <div class="d-flex flex-column gap-2">
-  <img
-    src="https://m.yodycdn.com/fit-in/filters:format(webp)/products/ao-so-mi-nam-coc-tay-yody-SCM7117-TIT%20(1).jpg"
-    alt=""
-    class="w-100"
-  />
-  <a href="details" class="text-decoration-none text-secondary-emphasis"
-    >Sơ mi cộc tay nam</a
+  <img src="http://localhost:8000/img/{{ product.img }}" alt="" class="w-100" />
+  <a
+    href="/details/{{ product.id }}"
+    class="text-decoration-none text-secondary-emphasis text-truncate"
+    >{{ product.name }}</a
   >
-  <h5>429.000 đ</h5>
+  <h5>{{ product.price | number }} đ</h5>
 </div>

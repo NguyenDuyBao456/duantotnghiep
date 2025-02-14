@@ -1,144 +1,38 @@
 <div class="w-100 bg-black d-flex justify-content-center h-72 mb-3">
   <div class="w-90 d-flex align-items-center">
     <div class="w-75 h-100 d-flex gap-4">
-      <a href="" class="d-flex justify-content-center align-items-center">
+      <a href="" class="d-flex text-decoration-none align-items-center">
         <span class="text-warning font-bold fs-3">cloth</span>
         <span class="text-primary font-bold fs-3">zone</span>
       </a>
       <div class="w-90 d-flex align-items-center">
         <div class="h-100 d-flex gap-5">
+          @for (item of category; track $index) {
           <ul class="menu-1 h-100 d-flex align-items-center">
             <li>
-              <a href="/product" class="text-decoration-none text-white">Nam</a>
+              <a
+                href="/product?category={{ item.id }}"
+                class="text-decoration-none text-white"
+                >{{ item.name }}</a
+              >
               <ul class="submenu">
-                <li class="d-flex gap-5">
-                  <div class="subcategories">
-                    <a href="/product">Áo Nam</a>
-                    <ul>
-                      <li><a href="/product">Áo khoác nam</a></li>
-                      <li><a href="/product">Áo vest nam</a></li>
-                      <li><a href="/product">Áo phao nam</a></li>
-                      <li><a href="/product">Áo gió nam</a></li>
-                      <li><a href="/product">Áo hoodies - Áo nỉ nam</a></li>
-                      <li><a href="/product">Áo len nam</a></li>
-                      <li><a href="/product">Áo thun nam</a></li>
-                      <li><a href="/product">Áo sơ mi nam</a></li>
-                      <li><a href="/product">Áo polo nam</a></li>
-                    </ul>
+                <li class="row w-75 gap-3">
+                  @for (subcate of item.subcategories; track $index) {
+                  <div class="col-2 subcategories">
+                    <a
+                      href="/product?category={{ item.id }}&subcategories={{
+                        subcate.id
+                      }}"
+                      class="text-secondary"
+                      >{{ subcate.name }}</a
+                    >
                   </div>
-                  <div class="subcategories">
-                    <a href="/product">Quần Nam</a>
-                    <ul>
-                      <li><a href="/product">Quần dài nam</a></li>
-                      <li><a href="/product">Quần kaki nam</a></li>
-                      <li><a href="/product">Quần short nam</a></li>
-                      <li><a href="/product">Quần jeans nam</a></li>
-                      <li><a href="/product">Quần âu nam</a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Quần Nam</a>
-                    <ul>
-                      <li><a href="/product">Quần dài nam</a></li>
-                      <li><a href="/product">Quần kaki nam</a></li>
-                      <li><a href="/product">Quần short nam</a></li>
-                      <li><a href="/product">Quần jeans nam</a></li>
-                      <li><a href="/product">Quần âu nam</a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Đồ thể thao nam</a>
-                    <ul>
-                      <li><a href="/product">Quần thể thao nam</a></li>
-                      <li><a href="/product">Áo polo thể thao nam</a></li>
-                      <li><a href="/product">Áo thun thể thao nam</a></li>
-                      <li><a href="/product">Bộ thể thao nam</a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Phụ kiện nam</a>
-                    <ul>
-                      <li><a href="/product">Tất nam</a></li>
-                      <li><a href="/product">Túi xách nam</a></li>
-                      <li><a href="/product">Mũ nam</a></li>
-                      <li><a href="/product">Thắt lưng nam</a></li>
-                      <li><a href="/product">Giày nam</a></li>
-                    </ul>
-                  </div>
+                  }
                 </li>
               </ul>
             </li>
           </ul>
-
-          <ul class="menu-1 h-100 d-flex align-items-center">
-            <li>
-              <a href="/product" class="text-decoration-none text-white">Nữ</a>
-              <ul class="submenu">
-                <li class="d-flex gap-5">
-                  <div class="subcategories">
-                    <a href="/product">Áo Nữ</a>
-                    <ul>
-                      <li><a href="/product">Áo khoác nữ</a></li>
-                      <li><a href="/product">Áo vest nữ</a></li>
-                      <li><a href="/product">Áo phao nữ</a></li>
-                      <li><a href="/product">Áo gió nữ</a></li>
-                      <li><a href="/product">Áo hoodies - Áo nỉ nữ</a></li>
-                      <li><a href="/product">Áo chống nắng nữ</a></li>
-                      <li><a href="/product">Áo len nữ</a></li>
-                      <li><a href="/product">Áo thun nữ</a></li>
-                      <li><a href="/product">Áo sơ mi nữ</a></li>
-                      <li><a href="/product">Áo polo nữ</a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Quần Nữ</a>
-                    <ul>
-                      <li><a href="/product">Quần dài nữ</a></li>
-                      <li><a href="/product">Quần nỉ nữ</a></li>
-                      <li><a href="/product">Quần kaki nữ</a></li>
-                      <li><a href="/product">Quần short nữ</a></li>
-                      <li><a href="/product">Quần jeans nữ</a></li>
-                      <li><a href="/product">Quần âu nữ</a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Đồ bộ nữ</a>
-                    <ul>
-                      <li><a href="/product">Đồ bộ dài tay nữ</a></li>
-                      <li><a href="/product">Đồ bộ ngắn tay nữ </a></li>
-                      <li><a href="/product">Quần kaki nữ</a></li>
-                      <li><a href="/product">Quần short nữ</a></li>
-                      <li><a href="/product">Quần jeans nữ</a></li>
-                      <li><a href="/product">Quần âu nữ</a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Đồ thể thao nữ</a>
-                    <ul>
-                      <li><a href="/product">Áo poly thể thao nữ</a></li>
-                      <li><a href="/product">Bộ thể thao nữ </a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Đầm và chân váy nữ</a>
-                    <ul>
-                      <li><a href="/product">Đầm nữ</a></li>
-                      <li><a href="/product">Chân váy nữ </a></li>
-                    </ul>
-                  </div>
-                  <div class="subcategories">
-                    <a href="/product">Phụ kiện nữ</a>
-                    <ul>
-                      <li><a href="/product">Tất nữ</a></li>
-                      <li><a href="/product">Phụ kiện khác nữ </a></li>
-                      <li><a href="/product">Túi xách nữ </a></li>
-                      <li><a href="/product">Giày nữ </a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          }
         </div>
       </div>
     </div>
