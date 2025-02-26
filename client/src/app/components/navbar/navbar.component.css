@@ -43,3 +43,18 @@
   margin: 0;
   padding: 10px 0px;
 }
+
+.cart {
+  position: relative;
+}
+.cart .count {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

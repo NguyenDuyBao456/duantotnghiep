@@ -1,4 +1,4 @@
-<div class="w-100 bg-black d-flex justify-content-center h-72 mb-3">
+<!-- <div class="w-100 bg-black d-flex justify-content-center h-72 mb-3">
   <div class="w-90 d-flex align-items-center">
     <div class="w-75 h-100 d-flex gap-4">
       <a href="" class="d-flex text-decoration-none align-items-center">
@@ -54,12 +54,91 @@
         />
       </div>
       <div class="d-flex gap-3">
-        <a href="cart" class="text-white">
-          <i class="fa-solid fa-bag-shopping font-25"></i>
+        <a href="cart" class="text-white cart">
+          <i class="fa-solid fa-bag-shopping font-20"></i>
+          @if (this.cart) {
+          <p class="bg-danger text-light count" style="font-size: 12px">
+            {{ this.cart }}
+          </p>
+          }
         </a>
-        <a href="login" class="text-white">
-          <i class="fa-solid fa-user font-25"></i>
+        <a
+          href="{{ user ? '/profile' : '/login' }}"
+          class="text-white d-flex justify-content-center align-items-center gap-2 text-decoration-none"
+        >
+          <i class="fa-solid fa-user font-20"></i>
+          <span>{{ user.name }}</span>
         </a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="top-header-area" id="sticker">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 text-center">
+        <div class="main-menu-wrap">
+          <!-- logo -->
+          <div class="site-logo">
+            <a href="index.html" class="d-flex text-decoration-none gap-1">
+              <i
+                class="fa-solid fa-shirt d-flex align-items-center"
+                style="font-size: 35px; color: #f28123"
+              ></i>
+              <div class="d-flex flex-column p-0 m-0">
+                <span
+                  style="
+                    color: #f28123;
+                    text-align: left;
+                    font-size: 20px;
+                    font-weight: 600;
+                  "
+                  >Clothzone</span
+                >
+                <span style="color: #f28123; text-align: left; font-size: 12px"
+                  >Fashion Modern</span
+                >
+              </div>
+            </a>
+          </div>
+          <!-- logo -->
+
+          <!-- menu start -->
+          <nav class="main-menu">
+            <ul>
+              <li class="">
+                <a href="/">Trang chủ</a>
+              </li>
+              <li><a href="/product?category=1">Sản phẩm Nam</a></li>
+              <li><a href="/product?category=2">Sản phẩm Nữ</a></li>
+
+              <li>
+                <div class="header-icons">
+                  <a class="shopping-cart cart" href="/cart"
+                    ><i class="fas fa-shopping-cart"></i>
+                    @if (this.cart) {
+                    <p
+                      class="bg-danger text-light count"
+                      style="font-size: 12px"
+                    >
+                      {{ this.cart }}
+                    </p>
+                    }
+                  </a>
+                  <a class="mobile-hide search-bar-icon" href="#"
+                    ><i class="fas fa-search"></i
+                  ></a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <a class="mobile-show search-bar-icon" href="#"
+            ><i class="fas fa-search"></i>
+          </a>
+          <div class="mobile-menu"></div>
+          <!-- menu end -->
+        </div>
       </div>
     </div>
   </div>

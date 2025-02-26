@@ -15,6 +15,7 @@ import { concatMap, forkJoin, of } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   products: any;
+  outstanding: any;
 
   constructor(
     private productService: ProductService,
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
+    this.getOutStanding();
   }
 
   getProduct() {
@@ -46,6 +48,14 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.products = data;
+
+        console.log(this.products);
       });
+  }
+
+  getOutStanding() {
+    this.productService.getProduct().subscribe((data: any) => {
+      this.outstanding = data.reverse().slice(0, 4);
+    });
   }
 }

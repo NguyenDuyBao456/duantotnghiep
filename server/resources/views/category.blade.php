@@ -13,7 +13,6 @@
   <table class="product-table">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Tên</th>
                 <th>Hành Động</th>
             </tr>
@@ -22,8 +21,19 @@
             @if (!empty($categories) && count($categories) > 0)
                 @foreach ($categories as $category)
                     <tr>
-                        <th>{{ $category->id }}</th>
+                        {{-- <th>{{ $category->id }}</th> --}}
                         <th>{{ $category->name }}</th>
+                        <th>
+                            <a href="#" class="btn btn-warning btn-sm">Sửa</a>
+                            <a href="#" class="btn btn-danger btn-sm">Xóa</a>
+                        </th>
+                    </tr>
+                @endforeach
+
+                @foreach ($subcategory as $sub)
+                    <tr>
+                        {{-- <th>{{ $sub->id }}</th> --}}
+                        <th>{{ $sub->name }}</th>
                         <th>
                             <a href="#" class="btn btn-warning btn-sm">Sửa</a>
                             <a href="#" class="btn btn-danger btn-sm">Xóa</a>

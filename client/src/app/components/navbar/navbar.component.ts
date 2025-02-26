@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { SubcategoriesService } from '../../services/subcategories.service';
 import { concatMap, forkJoin, of } from 'rxjs';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,14 +13,20 @@ import { concatMap, forkJoin, of } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   category: any;
+  cart: any;
+  user: any = localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user') || '')
+    : '';
 
   ngOnInit(): void {
     this.getCategory();
+    this.getCart();
   }
 
   constructor(
     private categoryService: CategoryService,
-    private subCategoriesService: SubcategoriesService
+    private subCategoriesService: SubcategoriesService,
+    private cartService: CartService
   ) {}
 
   getCategory() {
@@ -44,5 +51,11 @@ export class NavbarComponent implements OnInit {
       .subscribe((data: any) => {
         this.category = data;
       });
+  }
+
+  getCart() {
+    this.cartService.currentCart.subscribe((data) => {
+      this.cart = data.length;
+    });
   }
 }

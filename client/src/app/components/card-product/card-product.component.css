@@ -1,0 +1,106 @@
+.featured__item {
+  margin-bottom: 50px;
+}
+
+.featured__item:hover .featured__item__pic .featured__item__pic__hover {
+  bottom: 20px;
+}
+
+.featured__item__pic {
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  background-position: center center;
+}
+
+.featured__item__pic__hover {
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  -webkit-transition: all, 0.5s;
+  -moz-transition: all, 0.5s;
+  -ms-transition: all, 0.5s;
+  -o-transition: all, 0.5s;
+  transition: all, 0.5s;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  top: 0;
+  left: 0;
+}
+
+.featured__item__pic:hover .featured__item__pic__hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featured__item__pic__hover li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.featured__item__pic__hover li:last-child {
+  margin-right: 0;
+}
+
+.featured__item__pic__hover li:hover a {
+  background: #f28123;
+  border-color: #f28123;
+}
+
+.featured__item__pic__hover li:hover .featured__item {
+  background-color: red;
+}
+
+.featured__item__pic__hover li:hover a i {
+  color: #ffffff;
+  transform: rotate(360deg);
+}
+
+.featured__item__pic__hover li a {
+  font-size: 16px;
+  color: #1c1c1c;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #ebebeb;
+  background: #ffffff;
+  display: block;
+  border-radius: 50%;
+  -webkit-transition: all, 0.5s;
+  -moz-transition: all, 0.5s;
+  -ms-transition: all, 0.5s;
+  -o-transition: all, 0.5s;
+  transition: all, 0.5s;
+}
+
+.featured__item__pic__hover li a i {
+  position: relative;
+  transform: rotate(0);
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -ms-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
+}
+
+.featured__item__text {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.featured__item__text h6 {
+  margin-bottom: 10px;
+}
+
+.featured__item__text h6 a {
+  color: #252525;
+}
+
+.featured__item__text h5 {
+  color: #252525;
+  font-weight: 700;
+}

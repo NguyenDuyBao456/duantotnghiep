@@ -1,24 +1,39 @@
-<div class="w-100 d-flex justify-content-center">
-  <div class="w-90 d-flex border-right border-black gap-2">
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <p>Fresh and Organic</p>
+          <h1>Shop</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center mt-3 mb-3">
+  <div class="d-flex gap-2" style="width: 85%">
     <div class="w-20">
       <div class="border border-secondary p-3 rounded-3">
         <div>
           <h5 class="font-bold">Theo giá</h5>
           <ul class="list-unstyled d-flex flex-column">
-            <li class="p-2 li-hover" (click)="filterPrice(0, 350000)">
-              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
-                Dưới 350.000đ
-              </p>
+            <li class="p-2 li-hover" (click)="filterPrice(0, 350000, 0)" #price>
+              Dưới 350.000đ
             </li>
-            <li class="p-2 li-hover" (click)="filterPrice(350000, 750000)">
-              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
-                Từ 350.000đ - 750.000đ
-              </p>
+            <li
+              class="p-2 li-hover"
+              (click)="filterPrice(350000, 750000, 1)"
+              #price
+            >
+              Từ 350.000đ - 750.000đ
             </li>
-            <li class="p-2 li-hover" (click)="filterPrice(750000, 9999999999)">
-              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
-                Trên 750.000đ
-              </p>
+            <li
+              class="p-2 li-hover"
+              (click)="filterPrice(750000, 9999999999, 2)"
+              #price
+            >
+              Trên 750.000đ
             </li>
           </ul>
         </div>
@@ -29,10 +44,12 @@
             style="height: 300px; overflow: auto"
           >
             @for (item of subcategory; track $index) {
-            <li class="p-2 li-hover" (click)="filterSubCategory(item.id)">
-              <p class="text-decoration-none text-secondary-emphasis p-0 m-0">
-                {{ item.name }}
-              </p>
+            <li
+              class="p-2 li-hover"
+              (click)="filterSubCategory(item.id, $index)"
+              #category
+            >
+              {{ item.name }}
             </li>
             }
           </ul>
@@ -40,8 +57,10 @@
       </div>
     </div>
     <div class="row w-100 d-flex g-3" style="height: fit-content">
-      @for (product of products; track $index) {
-      <div class="col-3">
+      @if (products.length === 0) {
+      <p>Khong tim thay san pham</p>
+      } @for (product of products; track $index) {
+      <div class="col-lg-3 mix oranges fresh-meat">
         <app-card-product [product]="product"></app-card-product>
       </div>
       } @if (check) {

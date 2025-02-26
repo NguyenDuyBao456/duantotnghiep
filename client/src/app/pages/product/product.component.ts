@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
 import { ProductService } from '../../services/product.service';
 import {
@@ -9,6 +18,7 @@ import {
 } from '@angular/router';
 import { concatMap, forkJoin, of } from 'rxjs';
 import { SubcategoriesService } from '../../services/subcategories.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -17,7 +27,9 @@ import { SubcategoriesService } from '../../services/subcategories.service';
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent
+  implements OnInit, AfterViewInit, AfterViewChecked
+{
   products: any;
   subcategory: any;
   index: number = 8;
@@ -30,7 +42,8 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private subCategoriesService: SubcategoriesService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -38,17 +51,26 @@ export class ProductComponent implements OnInit {
     this.getSubCategory();
   }
 
+  ngAfterViewInit(): void {}
+
+  ngAfterViewChecked(): void {}
+
   viewMore() {
     this.index += 4;
     this.getProduct();
   }
 
   getProduct() {
+    Swal.fire({
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      allowOutsideClick: false,
+    });
+
     this.route.queryParams
       .pipe(
         concatMap((queryParams: any) => {
-          console.log(queryParams);
-
           return this.productService.getProduct().pipe(
             concatMap((products: any) => {
               if (
@@ -56,8 +78,6 @@ export class ProductComponent implements OnInit {
                 queryParams.max &&
                 !queryParams.subcategories
               ) {
-                console.log('Filter price');
-
                 const data = products.filter(
                   (product: any) =>
                     product.categories_id == queryParams.category &&
@@ -71,8 +91,6 @@ export class ProductComponent implements OnInit {
                 !queryParams.min &&
                 !queryParams.max
               ) {
-                console.log('Filter subcategories');
-
                 const data = products.filter(
                   (product: any) =>
                     product.categories_id == queryParams.category &&
@@ -85,8 +103,6 @@ export class ProductComponent implements OnInit {
                 queryParams.max &&
                 queryParams.subcategories
               ) {
-                console.log('Filter subcategories price');
-
                 const data = products.filter(
                   (product: any) =>
                     product.categories_id == queryParams.category &&
@@ -110,6 +126,7 @@ export class ProductComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.products = data;
+        Swal.close();
 
         if (this.total === data.length) {
           this.check = false;
@@ -118,15 +135,6 @@ export class ProductComponent implements OnInit {
   }
 
   getSubCategory() {
-    // this.subCategoriesService
-    //   .getSubCategories()
-    //   .subscribe(
-    //     (data: any) =>
-    //       (this.subcategory = data.filter(
-    //         (subcate: any) => subcate.categories_id === 1
-    //       ))
-    //   );
-
     this.route.queryParams
       .pipe(
         concatMap((queryParams: any) => {
@@ -145,7 +153,7 @@ export class ProductComponent implements OnInit {
       .subscribe((data: any) => (this.subcategory = data));
   }
 
-  filterPrice(min: number, max: number) {
+  filterPrice(min: number, max: number, index: number) {
     if (this.router.url.includes(`&min=${min}&max=${max}`)) {
       this.router
         .navigate([], {
@@ -163,13 +171,13 @@ export class ProductComponent implements OnInit {
           queryParams: { min, max },
           queryParamsHandling: 'merge',
         })
-        .then(() => this.getProduct());
+        .then(() => {
+          this.getProduct();
+        });
     }
   }
 
-  filterSubCategory(subcategories: number) {
-    console.log(subcategories);
-
+  filterSubCategory(subcategories: number, index: number) {
     if (this.router.url.includes(`&subcategories=${subcategories}`)) {
       this.router
         .navigate([], {

@@ -1,4 +1,4 @@
-@if (loading) {
+<!-- @if (loading) {
 <h2 class="text-center">Loading...</h2>
 } @else {
 <div class="w-100 d-flex justify-content-center">
@@ -16,8 +16,6 @@
     <div class="w-50 p-3 d-flex flex-column gap-3 rounded-2">
       <h6>{{ details.name }}</h6>
       <h2 class="text-danger">{{ details.price | number }} đ</h2>
-      <!-- <span>Màu sắc: Vàng</span>
-      <span>Kích thước: 3XL</span> -->
       <span>Số lượng:</span>
       <div class="d-flex gap-2">
         <input
@@ -49,4 +47,56 @@
     </div>
   </div>
 </div>
-}
+} -->
+
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>{{ details.name }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="single-product mt-150 mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="single-product-img d-flex justify-content-center">
+          <img
+            src="http://localhost:8000/img/{{ details.img }}"
+            alt=""
+            class="w-75"
+          />
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="single-product-content">
+          <h3>{{ details.name }}</h3>
+          <p class="single-product-pricing">{{ details.price | number }} đ</p>
+          <p>Kích thước: {{ details.size }}</p>
+          <p>
+            {{ details.description }}
+          </p>
+          <div class="single-product-form">
+            <form action="index.html">
+              <input
+                type="number"
+                min="1"
+                value="1"
+                name="qty"
+                [(ngModel)]="qty"
+              />
+            </form>
+            <a (click)="addToCart({ details , qty})" class="cart-btn">
+              <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Subcategories;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -66,6 +67,8 @@ class CategoriesController extends Controller
 
     public function getCategory() {
         $categories = Categories::all();
-        return view("category", compact('categories'));
+        $subcategory = Subcategories::all();
+        return view("category", compact('categories', 'subcategory'));
     }
+
 }

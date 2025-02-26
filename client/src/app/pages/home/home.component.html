@@ -1,4 +1,4 @@
-<div class="w-100 d-flex justify-content-center">
+<!-- <div class="w-100 d-flex justify-content-center">
   <div class="w-90 d-flex flex-column">
     <img
       src="https://m.yodycdn.com/fit-in/filters:format(webp)/products/media/collections/tet-2025-ban-chay-nhat-2712_1800x600%20copy.jpg"
@@ -16,11 +16,424 @@
         }
       </div>
       <div class="d-flex justify-content-center mt-3">
-        <a href="details/{{ item.id }}" class="btn btn-primary w-25"
+        <a href="/product?category={{ item.id }}" class="btn btn-primary w-25"
           >Xem Them</a
         >
       </div>
     </div>
     }
   </div>
+</div> -->
+
+<div class="search-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+        <div class="search-bar">
+          <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" placeholder="Keywords" />
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="hero-area hero-bg">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-9 text-center">
+        <div class="hero-text">
+          <div class="hero-text-tablecell">
+            <p class="subtitle">Thời trang đa dạng, giá tốt, freeship!</p>
+            <h1>Mua sắm dễ dàng, hỗ trợ 24/7!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="list-section pt-80 pb-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 d-flex justify-content-center">
+        <div class="list-box d-flex align-items-center">
+          <div class="list-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <div class="content">
+            <h3>Miễn phí vận chuyển</h3>
+            <p>Không lo phí ship</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 d-flex justify-content-center">
+        <div class="list-box d-flex align-items-center">
+          <div class="list-icon">
+            <i class="fas fa-phone-volume"></i>
+          </div>
+          <div class="content">
+            <h3>Hỗ trợ 24/7</h3>
+            <p>Bất cứ khi nào bạn cần</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 d-flex justify-content-center">
+        <div class="list-box d-flex align-items-center">
+          <div class="list-icon">
+            <i class="fas fa-phone-volume"></i>
+          </div>
+          <div class="content">
+            <h3>Đền bù</h3>
+            <p>Nhận hoàn tiền trong vòng 3 ngày!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="product-section mt-150 mb-150">
+  <div class="container">
+    @for (product of products; track $index) {
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="section-title">
+          <h3>
+            Sản phẩm <span class="orange-text">{{ product.name }}</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      @for (prod of product.products; track $index) {
+      <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+        <app-card-product [product]="prod"></app-card-product>
+      </div>
+      }
+    </div>
+    <div class="d-flex justify-content-center" style="margin: 50px 0px">
+      <a href="/product?category={{ product.id }}" class="btn btn-primary w-25"
+        >Xem Them</a
+      >
+    </div>
+    }
+  </div>
+</div>
+
+<div class="product-section mt-150 mb-150">
+  <div class="container">
+    <div class="col-lg-8 offset-lg-2 text-center">
+      <div class="section-title">
+        <h3>
+          <span>Sản phẩm Nổi bật</span>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      @for (prod of outstanding; track $index) {
+      <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+        <app-card-product [product]="prod"></app-card-product>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- <section class="cart-banner pt-100 pb-100">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="image-column col-lg-6">
+        <div class="image">
+          <div class="price-box">
+            <div class="inner-price">
+              <span class="price">
+                <strong>30%</strong> <br />
+                off per kg
+              </span>
+            </div>
+          </div>
+          <img src="assets/img/a.jpg" alt="" />
+        </div>
+      </div>
+      <div class="content-column col-lg-6">
+        <h3><span class="orange-text">Deal</span> of the month</h3>
+        <h4>Hikan Strwaberry</h4>
+        <div class="text">
+          Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam
+          similique! Beatae, minima quisquam molestias facere ea. Perspiciatis
+          unde omnis iste natus error sit voluptatem accusant
+        </div>
+        <div class="time-counter">
+          <div class="time-countdown clearfix" data-countdown="2020/2/01">
+            <div class="counter-column">
+              <div class="inner"><span class="count">00</span>Days</div>
+            </div>
+            <div class="counter-column">
+              <div class="inner"><span class="count">00</span>Hours</div>
+            </div>
+            <div class="counter-column">
+              <div class="inner"><span class="count">00</span>Mins</div>
+            </div>
+            <div class="counter-column">
+              <div class="inner"><span class="count">00</span>Secs</div>
+            </div>
+          </div>
+        </div>
+        <a href="cart.html" class="cart-btn mt-3"
+          ><i class="fas fa-shopping-cart"></i> Add to Cart</a
+        >
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <div class="testimonail-section mt-150 mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 text-center">
+        <div class="testimonial-sliders">
+          <div class="single-testimonial-slider">
+            <div class="client-avater">
+              <img src="assets/img/avaters/avatar1.png" alt="" />
+            </div>
+            <div class="client-meta">
+              <h3>Saira Hakim <span>Local shop owner</span></h3>
+              <p class="testimonial-body">
+                " Sed ut perspiciatis unde omnis iste natus error veritatis et
+                quasi architecto beatae vitae dict eaque ipsa quae ab illo
+                inventore Sed ut perspiciatis unde omnis iste natus error sit
+                voluptatem accusantium "
+              </p>
+              <div class="last-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="single-testimonial-slider">
+            <div class="client-avater">
+              <img src="assets/img/avaters/avatar2.png" alt="" />
+            </div>
+            <div class="client-meta">
+              <h3>David Niph <span>Local shop owner</span></h3>
+              <p class="testimonial-body">
+                " Sed ut perspiciatis unde omnis iste natus error veritatis et
+                quasi architecto beatae vitae dict eaque ipsa quae ab illo
+                inventore Sed ut perspiciatis unde omnis iste natus error sit
+                voluptatem accusantium "
+              </p>
+              <div class="last-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="single-testimonial-slider">
+            <div class="client-avater">
+              <img src="assets/img/avaters/avatar3.png" alt="" />
+            </div>
+            <div class="client-meta">
+              <h3>Jacob Sikim <span>Local shop owner</span></h3>
+              <p class="testimonial-body">
+                " Sed ut perspiciatis unde omnis iste natus error veritatis et
+                quasi architecto beatae vitae dict eaque ipsa quae ab illo
+                inventore Sed ut perspiciatis unde omnis iste natus error sit
+                voluptatem accusantium "
+              </p>
+              <div class="last-icon">
+                <i class="fas fa-quote-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="abt-section mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="abt-bg">
+          <img
+            src="https://inhat.vn/wp-content/uploads/2022/06/shop-quan-ao-nam-bac-ninh-5_optimized.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="abt-text">
+          <h2>Quần áo nam</h2>
+          <p>
+            "Nâng tầm phong cách của bạn với bộ sưu tập quần áo nam mới nhất!
+            Những thiết kế lịch lãm, cá tính và thoải mái, phù hợp cho mọi dịp –
+            từ công sở, dạo phố đến những buổi hẹn quan trọng. Không chỉ là quần
+            áo, đó còn là cách bạn thể hiện chất riêng của mình. Chất liệu cao
+            cấp, form dáng chuẩn, giúp bạn luôn tự tin và cuốn hút. Đừng bỏ lỡ –
+            chọn ngay phong cách của bạn hôm nay!"
+          </p>
+          <a href="/product?category=1" class="boxed-btn mt-4">Xem ngay</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="abt-section mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="abt-text">
+          <h2>Quần áo nữ</h2>
+          <p>
+            "Tỏa sáng theo cách riêng của bạn với bộ sưu tập thời trang nữ mới
+            nhất! Những thiết kế tinh tế, hiện đại và thoải mái, phù hợp cho mọi
+            phong cách – từ thanh lịch công sở, năng động dạo phố đến quyến rũ
+            trong những buổi tiệc. Chất liệu cao cấp, form dáng chuẩn, giúp bạn
+            luôn tự tin và nổi bật. Thời trang không chỉ là trang phục, mà còn
+            là tuyên ngôn cá tính. Chọn ngay phong cách của bạn hôm nay!"
+          </p>
+          <a href="/product?category=2" class="boxed-btn mt-4">Xem ngay</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <div class="abt-bg">
+          <img
+            src="https://59sdesign.com/wp-content/uploads/2021/05/mau-thiet-ke-shop-quan-ao-nu-don-gian-co-chi-phi-bao-nhieu-1.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <section class="shop-banner">
+  <div class="container">
+    <h3>
+      December sale is on! <br />
+      with big <span class="orange-text">Discount...</span>
+    </h3>
+    <div class="sale-percent">
+      <span
+        >Sale! <br />
+        Upto</span
+      >50% <span>off</span>
+    </div>
+    <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+  </div>
+</section> -->
+<!-- end shop banner -->
+
+<!-- latest news -->
+<!-- <div class="latest-news pt-150 pb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="section-title">
+          <h3><span class="orange-text">Our</span> News</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
+            fuga quas itaque eveniet beatae optio.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="single-latest-news">
+          <a href="single-news.html"
+            ><div class="latest-news-bg news-bg-1"></div
+          ></a>
+          <div class="news-text-box">
+            <h3>
+              <a href="single-news.html"
+                >You will vainly look for fruit on it in autumn.</a
+              >
+            </h3>
+            <p class="blog-meta">
+              <span class="author"><i class="fas fa-user"></i> Admin</span>
+              <span class="date"
+                ><i class="fas fa-calendar"></i> 27 December, 2019</span
+              >
+            </p>
+            <p class="excerpt">
+              Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
+              nisi. Praesent vitae mattis nunc, egestas viverra eros.
+            </p>
+            <a href="single-news.html" class="read-more-btn"
+              >read more <i class="fas fa-angle-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="single-latest-news">
+          <a href="single-news.html"
+            ><div class="latest-news-bg news-bg-2"></div
+          ></a>
+          <div class="news-text-box">
+            <h3>
+              <a href="single-news.html"
+                >A man's worth has its season, like tomato.</a
+              >
+            </h3>
+            <p class="blog-meta">
+              <span class="author"><i class="fas fa-user"></i> Admin</span>
+              <span class="date"
+                ><i class="fas fa-calendar"></i> 27 December, 2019</span
+              >
+            </p>
+            <p class="excerpt">
+              Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
+              nisi. Praesent vitae mattis nunc, egestas viverra eros.
+            </p>
+            <a href="single-news.html" class="read-more-btn"
+              >read more <i class="fas fa-angle-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
+        <div class="single-latest-news">
+          <a href="single-news.html"
+            ><div class="latest-news-bg news-bg-3"></div
+          ></a>
+          <div class="news-text-box">
+            <h3>
+              <a href="single-news.html"
+                >Good thoughts bear good fresh juicy fruit.</a
+              >
+            </h3>
+            <p class="blog-meta">
+              <span class="author"><i class="fas fa-user"></i> Admin</span>
+              <span class="date"
+                ><i class="fas fa-calendar"></i> 27 December, 2019</span
+              >
+            </p>
+            <p class="excerpt">
+              Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus
+              nisi. Praesent vitae mattis nunc, egestas viverra eros.
+            </p>
+            <a href="single-news.html" class="read-more-btn"
+              >read more <i class="fas fa-angle-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <a href="news.html" class="boxed-btn">More News</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- end latest news -->
