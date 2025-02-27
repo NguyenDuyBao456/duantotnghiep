@@ -56,6 +56,8 @@ export class DetailsComponent implements OnInit {
   }
 
   addToCart(data: any) {
+    console.log(data);
+
     if (!this.cartService.getCart()) {
       this.cartService.setCart([]);
     }

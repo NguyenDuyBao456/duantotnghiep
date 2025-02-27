@@ -14,4 +14,8 @@ export class UserService {
   register(data: any) {
     return this.http.post('http://localhost:8000/api/register', data);
   }
+
+  logout() {
+    localStorage.removeItem('user');
+  }
 }

@@ -6,6 +6,7 @@ import {
   ElementRef,
   OnInit,
   QueryList,
+  viewChildren,
   ViewChildren,
 } from '@angular/core';
 import { CardProductComponent } from '../../components/card-product/card-product.component';
@@ -38,6 +39,12 @@ export class ProductComponent
 
   isClickFilterPrice: any[] = [];
 
+  @ViewChildren('price') priceElements!: QueryList<ElementRef>;
+  @ViewChildren('category') categoryElements!: QueryList<ElementRef>;
+
+  activePrice: any = localStorage.getItem('activePrice');
+  activeCategory: any = localStorage.getItem('activeCategory');
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -53,7 +60,10 @@ export class ProductComponent
 
   ngAfterViewInit(): void {}
 
-  ngAfterViewChecked(): void {}
+  ngAfterViewChecked(): void {
+    this.setActivePrice(this.activePrice);
+    this.setActiveCategory(this.activeCategory);
+  }
 
   viewMore() {
     this.index += 4;
@@ -153,7 +163,7 @@ export class ProductComponent
       .subscribe((data: any) => (this.subcategory = data));
   }
 
-  filterPrice(min: number, max: number, index: number) {
+  filterPrice(min: number, max: number, url: string) {
     if (this.router.url.includes(`&min=${min}&max=${max}`)) {
       this.router
         .navigate([], {
@@ -162,6 +172,7 @@ export class ProductComponent
           queryParamsHandling: 'merge',
         })
         .then(() => {
+          localStorage.removeItem('activePrice');
           window.location.reload();
         });
     } else {
@@ -173,11 +184,12 @@ export class ProductComponent
         })
         .then(() => {
           this.getProduct();
+          this.setActivePrice(url);
         });
     }
   }
 
-  filterSubCategory(subcategories: number, index: number) {
+  filterSubCategory(subcategories: number, url: string) {
     if (this.router.url.includes(`&subcategories=${subcategories}`)) {
       this.router
         .navigate([], {
@@ -186,6 +198,7 @@ export class ProductComponent
           queryParamsHandling: 'merge',
         })
         .then(() => {
+          localStorage.removeItem('activeCategory');
           window.location.reload();
         });
     } else {
@@ -197,7 +210,36 @@ export class ProductComponent
         })
         .then(() => {
           this.getProduct();
+          this.setActiveCategory(url);
         });
     }
+  }
+
+  setActivePrice(url: string) {
+    localStorage.setItem('activePrice', url);
+
+    this.priceElements.forEach((element: ElementRef) => {
+      if (location.href.includes(element.nativeElement.getAttribute('fr'))) {
+        console.log('Price');
+
+        element.nativeElement.classList.add('color-bg', 'text-ligt');
+      } else {
+        element.nativeElement.classList.remove('color-bg', 'text-light');
+      }
+    });
+  }
+
+  setActiveCategory(url: string) {
+    localStorage.setItem('activeCategory', url);
+
+    this.categoryElements.forEach((element: ElementRef) => {
+      if (location.href.includes(element.nativeElement.getAttribute('fc'))) {
+        console.log('Category');
+
+        element.nativeElement.classList.add('color-bg', 'text-ligt');
+      } else {
+        element.nativeElement.classList.remove('color-bg', 'text-light');
+      }
+    });
   }
 }

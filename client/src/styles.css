@@ -2793,3 +2793,7 @@ table.order-details tbody td {
   vertical-align: middle;
   width: 100%;
 }
+
+.color-bg {
+  background-color: #f28123;
+}

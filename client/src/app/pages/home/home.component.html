@@ -99,7 +99,61 @@
 
 <div class="product-section mt-150 mb-150">
   <div class="container">
+    <div class="col-lg-8 offset-lg-2 text-center">
+      <div class="section-title">
+        <h3>
+          <span>Sản phẩm Nổi bật</span>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      @for (prod of outstanding; track $index) {
+      <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+        <app-card-product [product]="prod"></app-card-product>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="product-section mt-150 mb-150">
+  <div class="container">
     @for (product of products; track $index) {
+    <div class="abt-section mb-150">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <div class="abt-text">
+              <h2>Quần áo {{ product.name }}</h2>
+              <p>
+                "Tỏa sáng theo cách riêng của bạn với bộ sưu tập thời trang mới
+                nhất! Những thiết kế tinh tế, hiện đại và thoải mái, phù hợp cho
+                mọi phong cách – từ thanh lịch công sở, năng động dạo phố đến
+                quyến rũ trong những buổi tiệc. Chất liệu cao cấp, form dáng
+                chuẩn, giúp bạn luôn tự tin và nổi bật. Thời trang không chỉ là
+                trang phục, mà còn là tuyên ngôn cá tính. Chọn ngay phong cách
+                của bạn hôm nay!"
+              </p>
+              <a
+                href="/product?category={{ product.id }}"
+                class="boxed-btn mt-4"
+                >Xem ngay</a
+              >
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+            <div class="abt-bg">
+              <img
+                src="https://59sdesign.com/wp-content/uploads/2021/05/mau-thiet-ke-shop-quan-ao-nu-don-gian-co-chi-phi-bao-nhieu-1.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="section-title">
@@ -123,25 +177,6 @@
       >
     </div>
     }
-  </div>
-</div>
-
-<div class="product-section mt-150 mb-150">
-  <div class="container">
-    <div class="col-lg-8 offset-lg-2 text-center">
-      <div class="section-title">
-        <h3>
-          <span>Sản phẩm Nổi bật</span>
-        </h3>
-      </div>
-    </div>
-    <div class="row">
-      @for (prod of outstanding; track $index) {
-      <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-        <app-card-product [product]="prod"></app-card-product>
-      </div>
-      }
-    </div>
   </div>
 </div>
 
@@ -255,7 +290,7 @@
   </div>
 </div> -->
 
-<div class="abt-section mb-150">
+<!-- <div class="abt-section mb-150">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-12">
@@ -312,7 +347,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- <section class="shop-banner">
   <div class="container">

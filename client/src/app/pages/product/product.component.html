@@ -3,8 +3,7 @@
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="breadcrumb-text">
-          <p>Fresh and Organic</p>
-          <h1>Shop</h1>
+          <h1>Sản phẩm</h1>
         </div>
       </div>
     </div>
@@ -18,19 +17,28 @@
         <div>
           <h5 class="font-bold">Theo giá</h5>
           <ul class="list-unstyled d-flex flex-column">
-            <li class="p-2 li-hover" (click)="filterPrice(0, 350000, 0)" #price>
+            <li
+              class="p-2 li-hover"
+              fr="min=0&max=350000"
+              (click)="filterPrice(0, 350000, 'min=0&max=350000')"
+              #price
+            >
               Dưới 350.000đ
             </li>
             <li
               class="p-2 li-hover"
-              (click)="filterPrice(350000, 750000, 1)"
+              fr="min=350000&max=750000"
+              (click)="filterPrice(350000, 750000, 'min=350000&max=750000')"
               #price
             >
               Từ 350.000đ - 750.000đ
             </li>
             <li
               class="p-2 li-hover"
-              (click)="filterPrice(750000, 9999999999, 2)"
+              fr="min=750000&max=9999999999"
+              (click)="
+                filterPrice(750000, 9999999999, 'min=750000&max=9999999999')
+              "
               #price
             >
               Trên 750.000đ
@@ -46,7 +54,8 @@
             @for (item of subcategory; track $index) {
             <li
               class="p-2 li-hover"
-              (click)="filterSubCategory(item.id, $index)"
+              [attr.fc]="'subcategories=' + item.id"
+              (click)="filterSubCategory(item.id, 'subcategories=' + item.id)"
               #category
             >
               {{ item.name }}

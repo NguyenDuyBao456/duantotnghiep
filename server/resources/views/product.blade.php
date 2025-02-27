@@ -17,6 +17,7 @@
         <th>Hình</th>
         <th>Tên</th>
         <th>Giá</th>
+        <th>Kích thước</th>
         <th>Hành động</th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@
                <th> <img src="{{ asset('img/' . $product['img']) }}" width="100"></th>
                <th> {{ $product['name'] }} </th>
                <th> {{ $product['price'] }} </th>
+               <th>{{$product['size']}}</th>
                <th>
                     <button type="button" class="button-btn btn btn-success" name="Sửa">Sửa</button>
                     <button type="button" class="button-btn btn btn-danger" name="xóa">Xóa</button>

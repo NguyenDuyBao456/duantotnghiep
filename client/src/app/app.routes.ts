@@ -6,7 +6,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { InfoComponent } from './pages/profile/info/info.component';
 
 export const routes: Routes = [
   {
@@ -44,5 +45,15 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    children: [
+      {
+        path: 'info',
+        component: InfoComponent,
+      },
+      {
+        path: '',
+        component: InfoComponent,
+      },
+    ],
   },
 ];
