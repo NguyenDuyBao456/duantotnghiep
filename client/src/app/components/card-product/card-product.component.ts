@@ -1,6 +1,7 @@
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-card-product',
@@ -13,7 +14,10 @@ import { CartService } from '../../services/cart.service';
 export class CardProductComponent {
   @Input() product: any;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private userService: UserService
+  ) {}
 
   addToCart() {
     const data = { details: this.product, qty: 1 };

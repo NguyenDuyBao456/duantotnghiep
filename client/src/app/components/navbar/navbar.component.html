@@ -129,11 +129,9 @@
                   <a class="mobile-hide search-bar-icon" href="#"
                     ><i class="fas fa-search"></i
                   ></a>
-                  <a
-                    class="mobile-hide search-bar-icon"
-                    href="{{ user ? '/profile' : '/login' }}"
+                  <a class="mobile-hide search-bar-icon" href="/login"
                     ><i class="fas fa-user"></i>
-                    <span class="ml-2">{{ user.name }}</span></a
+                    <span class="ml-2">{{ user && user.name }}</span></a
                   >
                 </div>
               </li>

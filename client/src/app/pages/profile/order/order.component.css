@@ -1,0 +1,4 @@
+.custom-scroll {
+  overflow-x: auto; /* Luôn hiển thị thanh cuộn ngang khi bảng quá rộng */
+  white-space: nowrap; /* Ngăn chặn xuống dòng trong bảng */
+}

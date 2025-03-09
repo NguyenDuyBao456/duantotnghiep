@@ -2797,3 +2797,17 @@ table.order-details tbody td {
 .color-bg {
   background-color: #f28123;
 }
+
+.fade-out {
+  animation: fadeOut 1.3s linear;
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

@@ -98,7 +98,7 @@
   </div>
 </div>
 
-@if (cart.length === 0) {
+@if (cart && !cart.length) {
 <div
   class="d-flex flex-column justify-content-center align-items-center gap-3"
   style="padding: 100px"
@@ -178,7 +178,7 @@
             <tbody>
               <tr class="total-data">
                 <td><strong>Tạm tính: </strong></td>
-                <td class="text-right">{{ this.total }} đ</td>
+                <td class="text-right">{{ this.total | number }} đ</td>
               </tr>
               <tr class="total-data">
                 <td><strong>Phí vận chuyển: </strong></td>
@@ -186,29 +186,55 @@
               </tr>
               <tr class="total-data">
                 <td><strong>Tổng cộng: </strong></td>
-                <td class="text-right">{{ this.total }} đ</td>
+                <td class="text-right">{{ this.total | number }} đ</td>
               </tr>
             </tbody>
           </table>
 
-          <div class="mt-3 border border-secondary-subtle p-3">
-            <div class="mb-22">
+          <form
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()"
+            class="mt-3 border border-secondary-subtle p-3"
+          >
+            <div class="mb-2">
               <label
                 for="exampleInput"
                 class="form-label"
                 style="font-size: 14px"
                 >Họ tên</label
               >
-              <input type="email" class="form-control" id="exampleInput" />
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                id="exampleInput"
+              />
+              @if (form.controls['name'].dirty) { @if
+              (form.controls['name'].hasError("required")) {
+              <p class="text-danger" style="font-size: 12px">
+                Đây là thông tin bắt buộc
+              </p>
+              } }
             </div>
-            <div class="mb-22">
+            <div class="mb-2">
               <label
                 for="exampleInput"
                 class="form-label"
                 style="font-size: 14px"
                 >Địa chỉ</label
               >
-              <input type="email" class="form-control" id="exampleInput" />
+              <input
+                type="text"
+                formControlName="address"
+                class="form-control"
+                id="exampleInput"
+              />
+              @if (form.controls['address'].dirty) { @if
+              (form.controls['address'].hasError("required")) {
+              <p class="text-danger" style="font-size: 12px">
+                Đây là thông tin bắt buộc
+              </p>
+              } }
             </div>
             <div class="mb-2">
               <label
@@ -217,14 +243,80 @@
                 style="font-size: 14px"
                 >Số điện thoại</label
               >
-              <input type="email" class="form-control" id="exampleInput" />
+              <input
+                type="text"
+                formControlName="phone"
+                class="form-control"
+                id="exampleInput"
+              />
+              @if (form.controls['phone'].dirty) {
+              @if(form.controls['phone'].hasError("required")) {
+              <p class="text-danger" style="font-size: 12px">
+                Đây là thông tin bắt buộc
+              </p>
+              } @else if(form.controls['phone'].hasError("pattern")) {
+              <p class="text-danger" style="font-size: 12px">
+                Số điện thoại không hợp lệ
+              </p>
+              } }
             </div>
 
-            <div class="d-flex gap-2">
-              <button class="btn btn-primary">Thanh toán VNpay</button>
-              <button class="btn btn-danger">Thanh toán Momo</button>
+            <div class="mb-2">
+              <label
+                for="exampleInput"
+                class="form-label"
+                style="font-size: 14px"
+                >Phương thức vận chuyển</label
+              >
+              <select formControlName="ship" class="form-control">
+                <option value="" style="font-size: 14px">
+                  Chọn phương thức vận chuyển
+                </option>
+                @for (ship of ships; track $index) {
+                <option value="{{ ship.id }}">{{ ship.name }}</option>
+                }
+              </select>
             </div>
-          </div>
+
+            <div class="d-flex flex-column gap-2">
+              <button
+                class="btn d-flex justify-content-center align-items-center border border-secondary gap-3"
+                (click)="zalopay()"
+              >
+                <img
+                  src="https://vcci-hcm.org.vn/wp-content/uploads/2022/12/1.png"
+                  alt=""
+                  srcset=""
+                  width="40"
+                />
+                <p>Thanh toán VNpay</p>
+              </button>
+              <button
+                class="btn d-flex justify-content-center align-items-center border border-secondary gap-3"
+                (click)="momo()"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png"
+                  alt=""
+                  srcset=""
+                  width="40"
+                />
+                <p>Thanh toán Momo</p>
+              </button>
+              <button
+                class="btn d-flex justify-content-center align-items-center border border-secondary gap-3"
+                (click)="vnpay()"
+              >
+                <img
+                  src="https://cdn.haitrieu.com/wp-content/uploads/2022/10/Icon-VNPAY-QR.png"
+                  alt=""
+                  srcset=""
+                  width="40"
+                />
+                <p>Thanh toán VNpay</p>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

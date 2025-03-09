@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-register',
@@ -18,20 +19,18 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
     email: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
-    ]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
     ]),
   });
 
   ngOnInit(): void {}
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private emailService: EmailService
+  ) {}
 
   onSubmit() {
     Swal.fire({
@@ -41,18 +40,16 @@ export class RegisterComponent implements OnInit {
       allowOutsideClick: false,
     });
 
-    const { name, password, email } = this.form.value;
+    const { email } = this.form.value;
 
-    this.userService.register(this.form.value).subscribe(
+    this.userService.register({ email }).subscribe(
       (data: any) => {
         Swal.fire({
-          text: 'Đăng nhập thành công',
-          allowOutsideClick: false,
+          text: data.message,
           icon: 'success',
+          allowOutsideClick: false,
         }).then(({ isConfirmed }) => {
-          if (isConfirmed) {
-            location.href = 'login';
-          }
+          if (isConfirmed) location.href = 'login';
         });
       },
       (error) => {
@@ -60,5 +57,23 @@ export class RegisterComponent implements OnInit {
         Swal.close();
       }
     );
+
+    // this.userService.register(this.form.value).subscribe(
+    //   (data: any) => {
+    //     Swal.fire({
+    //       text: 'Đăng nhập thành công',
+    //       allowOutsideClick: false,
+    //       icon: 'success',
+    //     }).then(({ isConfirmed }) => {
+    //       if (isConfirmed) {
+    //         location.href = 'login';
+    //       }
+    //     });
+    //   },
+    //   (error) => {
+    //     this.form.controls['email'].setErrors({ emailExists: true });
+    //     Swal.close();
+    //   }
+    // );
   }
 }

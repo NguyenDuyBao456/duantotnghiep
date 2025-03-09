@@ -1,1 +1,20 @@
-<p>info works!</p>
+<div class="container">
+  <h2>Thông tin cá nhân</h2>
+
+  <ul style="margin: 0; padding: 0">
+    <li class="list-unstyled d-flex w-50">
+      <p class="w-25">ID</p>
+      <p class="w-25">{{ user && user.id }}</p>
+    </li>
+
+    <li class="list-unstyled d-flex w-50">
+      <p class="w-25">Tên</p>
+      <p class="w-25">{{ user && user.name }}</p>
+    </li>
+
+    <li class="list-unstyled d-flex w-50">
+      <p class="w-25">Email</p>
+      <p class="w-25">{{ user && user.email }}</p>
+    </li>
+  </ul>
+</div>

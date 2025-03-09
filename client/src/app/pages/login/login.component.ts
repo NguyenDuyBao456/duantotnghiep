@@ -22,10 +22,6 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
   });
 
-  user: any = localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user') || '')
-    : '';
-
   ngOnInit(): void {}
 
   constructor(private userService: UserService) {}
@@ -45,10 +41,11 @@ export class LoginComponent implements OnInit {
           icon: 'success',
           allowOutsideClick: false,
         }).then(({ isConfirmed }) => {
-          if (isConfirmed) {
-            localStorage.setItem('user', JSON.stringify(data.user));
-            location.href = '/';
-          }
+          localStorage.setItem(
+            'token',
+            JSON.stringify(data.token.plainTextToken)
+          );
+          location.href = '/';
         });
       },
       (error) => {

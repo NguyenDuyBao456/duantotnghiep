@@ -3,6 +3,7 @@ import { CategoryService } from '../../services/category.service';
 import { SubcategoriesService } from '../../services/subcategories.service';
 import { concatMap, forkJoin, of } from 'rxjs';
 import { CartService } from '../../services/cart.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,11 +15,13 @@ import { CartService } from '../../services/cart.service';
 export class NavbarComponent implements OnInit {
   category: any;
   cart: any;
-  user: any = localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user') || '')
+  token: any = localStorage.getItem('token')
+    ? JSON.parse(localStorage.getItem('token') || '')
     : '';
+  user: any;
 
   ngOnInit(): void {
+    this.getUser();
     this.getCategory();
     this.getCart();
   }
@@ -26,8 +29,23 @@ export class NavbarComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private subCategoriesService: SubcategoriesService,
-    private cartService: CartService
+    private cartService: CartService,
+    private userService: UserService
   ) {}
+
+  getUser() {
+    this.userService.decoded(this.token).subscribe((data: any) => {
+      this.user = data;
+
+      this.cartService.currentCart.subscribe((data) => {
+        if (!this.user) {
+          this.cart = false;
+        } else {
+          this.cart = data.length;
+        }
+      });
+    });
+  }
 
   getCategory() {
     forkJoin([
@@ -53,9 +71,5 @@ export class NavbarComponent implements OnInit {
       });
   }
 
-  getCart() {
-    this.cartService.currentCart.subscribe((data) => {
-      this.cart = data.length;
-    });
-  }
+  getCart() {}
 }

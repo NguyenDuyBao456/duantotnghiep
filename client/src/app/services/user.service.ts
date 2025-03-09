@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,14 @@ export class UserService {
   }
 
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+  }
+
+  decoded(token: string) {
+    return this.http.get(`http://localhost:8000/api/decode_token`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 }

@@ -1,26 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
 export class ProfileComponent implements OnInit {
-  user: any = localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user') || '')
+  token: any = localStorage.getItem('token')
+    ? JSON.parse(localStorage.getItem('token') || '')
     : '';
+  user: any;
 
   ngOnInit(): void {
-    if (!this.user) {
-      location.href = '/';
-    }
+    this.getUser();
   }
 
   constructor(private userService: UserService) {}
+
+  getUser() {
+    this.userService.decoded(this.token).subscribe((data: any) => {
+      this.user = data;
+    });
+  }
 
   logout() {
     this.userService.logout();

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart.service';
 import Swal from 'sweetalert2';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-details',
@@ -19,15 +20,28 @@ export class DetailsComponent implements OnInit {
   details: any;
   qty: number = 1;
 
+  token: any = localStorage.getItem('token')
+    ? JSON.parse(localStorage.getItem('token') || '')
+    : '';
+  user: any;
+
   ngOnInit(): void {
     this.getProduct();
+    this.getUser();
   }
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private userService: UserService
   ) {}
+
+  getUser() {
+    this.userService.decoded(this.token).subscribe((data: any) => {
+      this.user = data;
+    });
+  }
 
   getProduct() {
     Swal.fire({
@@ -56,15 +70,16 @@ export class DetailsComponent implements OnInit {
   }
 
   addToCart(data: any) {
-    console.log(data);
+    if (!this.user) {
+      location.href = '/login';
+      return;
+    }
 
     if (!this.cartService.getCart()) {
       this.cartService.setCart([]);
     }
 
     const cart = JSON.parse(this.cartService.getCart() || '');
-
-    console.log(cart);
 
     const check = cart.find((c: any) => c.details.id === data.details.id);
 

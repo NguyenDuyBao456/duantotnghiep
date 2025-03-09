@@ -1,3 +1,4 @@
+import { authGuard } from './guards/auth.guard';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductComponent } from './pages/product/product.component';
@@ -8,6 +9,10 @@ import { CartComponent } from './pages/cart/cart.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { InfoComponent } from './pages/profile/info/info.component';
+import { guestGuard } from './guards/guest.guard';
+import { ThankComponent } from './pages/thank/thank.component';
+import { OrderComponent } from './pages/profile/order/order.component';
+import { OrderdetailsComponent } from './pages/orderdetails/orderdetails.component';
 
 export const routes: Routes = [
   {
@@ -21,10 +26,12 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [guestGuard],
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [guestGuard],
   },
   {
     path: 'details',
@@ -33,6 +40,7 @@ export const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [authGuard],
   },
   {
     path: 'details/:id',
@@ -45,6 +53,7 @@ export const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'info',
@@ -52,8 +61,21 @@ export const routes: Routes = [
       },
       {
         path: '',
-        component: InfoComponent,
+        redirectTo: 'info',
+        pathMatch: 'full',
+      },
+      {
+        path: 'order',
+        component: OrderComponent,
       },
     ],
+  },
+  {
+    path: 'thank',
+    component: ThankComponent,
+  },
+  {
+    path: 'orderdetails/:id',
+    component: OrderdetailsComponent,
   },
 ];

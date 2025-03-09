@@ -20,7 +20,7 @@
       <a href="/admin/sanpham">Quản lý sản phẩm</a>
       <a href="/admin/danhmuc">Quản lý danh mục</a>
       <a href="user?ctrl=admin&views=user">Quản lý người dùng</a>
-      <a href="?ctrl=admin&views=order">Quản lý đơn hàng</a>
+      <a href="/admin/donhang">Quản lý đơn hàng</a>
       <a href="?ctrl=admin&views=bieudo">Số liệu thống kê</a>
       <a href="welcome?ctrl=admin&views=welcome">Back To Website</a>
     </div>

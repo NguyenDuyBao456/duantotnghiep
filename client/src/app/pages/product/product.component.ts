@@ -16,6 +16,7 @@ import {
   Router,
   RouterLink,
   RouterLinkActive,
+  UrlSegmentGroup,
 } from '@angular/router';
 import { concatMap, forkJoin, of } from 'rxjs';
 import { SubcategoriesService } from '../../services/subcategories.service';
@@ -60,10 +61,7 @@ export class ProductComponent
 
   ngAfterViewInit(): void {}
 
-  ngAfterViewChecked(): void {
-    this.setActivePrice(this.activePrice);
-    this.setActiveCategory(this.activeCategory);
-  }
+  ngAfterViewChecked(): void {}
 
   viewMore() {
     this.index += 4;
@@ -172,7 +170,6 @@ export class ProductComponent
           queryParamsHandling: 'merge',
         })
         .then(() => {
-          localStorage.removeItem('activePrice');
           window.location.reload();
         });
     } else {
@@ -184,7 +181,6 @@ export class ProductComponent
         })
         .then(() => {
           this.getProduct();
-          this.setActivePrice(url);
         });
     }
   }
@@ -198,7 +194,6 @@ export class ProductComponent
           queryParamsHandling: 'merge',
         })
         .then(() => {
-          localStorage.removeItem('activeCategory');
           window.location.reload();
         });
     } else {
@@ -210,36 +205,7 @@ export class ProductComponent
         })
         .then(() => {
           this.getProduct();
-          this.setActiveCategory(url);
         });
     }
-  }
-
-  setActivePrice(url: string) {
-    localStorage.setItem('activePrice', url);
-
-    this.priceElements.forEach((element: ElementRef) => {
-      if (location.href.includes(element.nativeElement.getAttribute('fr'))) {
-        console.log('Price');
-
-        element.nativeElement.classList.add('color-bg', 'text-ligt');
-      } else {
-        element.nativeElement.classList.remove('color-bg', 'text-light');
-      }
-    });
-  }
-
-  setActiveCategory(url: string) {
-    localStorage.setItem('activeCategory', url);
-
-    this.categoryElements.forEach((element: ElementRef) => {
-      if (location.href.includes(element.nativeElement.getAttribute('fc'))) {
-        console.log('Category');
-
-        element.nativeElement.classList.add('color-bg', 'text-ligt');
-      } else {
-        element.nativeElement.classList.remove('color-bg', 'text-light');
-      }
-    });
   }
 }

@@ -1,0 +1,38 @@
+<div class="table-responsive custom-scroll">
+  <h2>Đơn hàng</h2>
+
+  <table class="table table-hover mb-0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Họ tên</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Ngày đặt</th>
+        <th>Tổng Tiền</th>
+        <th>Trạng thái</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of orders; track $index) {
+
+      <tr>
+        <td>
+          <a class="navi-link" href="/orderdetails/{{ order.id }}">
+            {{ order.id }}</a
+          >
+        </td>
+        <td>{{ order.name }}</td>
+        <td>{{ order.address }}</td>
+        <td>{{ order.phone }}</td>
+        <td>{{ order.datetime }}</td>
+        <td>{{ order.amount }}</td>
+        <td>
+          <span class="badge badge-danger m-0">{{ order.status }}</span>
+        </td>
+      </tr>
+
+      }
+    </tbody>
+  </table>
+</div>

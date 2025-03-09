@@ -1,0 +1,70 @@
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>Đơn hàng chi tiết</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="card shadow-lg border-0 rounded">
+    <div class="card-body p-4">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h4 class="fw-bold text-primary mb-3">Thông tin khách hàng</h4>
+          <ul class="list-group mb-4">
+            <li class="list-group-item">
+              <strong>Họ tên:</strong> {{ this.order.order.name }}
+            </li>
+            <li class="list-group-item">
+              <strong>Địa chỉ:</strong> {{ this.order.order.address }}
+            </li>
+            <li class="list-group-item">
+              <strong>Số điện thoại:</strong> {{ this.order.order.phone }}
+            </li>
+            <li class="list-group-item">
+              <strong>Ngày đặt:</strong> {{ this.order.order.datetime }}
+            </li>
+          </ul>
+
+          <h4 class="fw-bold text-primary mb-3">Chi tiết đơn hàng</h4>
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+              <thead class="bg-primary text-white">
+                <tr>
+                  <th scope="col">STT</th>
+                  <th scope="col">Tên sản phẩm</th>
+                  <th scope="col">Giá</th>
+                  <th scope="col">Số lượng</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of order.details; track $index) {
+                <tr>
+                  <td>{{ $index + 1 }}</td>
+                  <td>{{ item.product.name }}</td>
+                  <td>{{ item.product.price }} VNĐ</td>
+                  <td>{{ item.qty }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <div
+            class="d-flex justify-content-between align-items-center p-3 mt-4 bg-light rounded shadow-sm"
+          >
+            <h5 class="fw-bold text-dark">Tổng tiền:</h5>
+            <h2 class="fw-bold text-danger">
+              {{ this.order.order.amount }} VNĐ
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
