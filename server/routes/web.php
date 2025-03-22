@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductsController;
@@ -11,25 +12,16 @@ use App\Http\Middleware\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 // web
-Route::get("/admin/sanpham", function () {
-    return view('product');
-});
-Route::get("/admin/sanpham", [ProductsController::class, 'getProducts']);
+Route::get("/admin", [DashboardController::class, 'getTotal']);
+Route::get("/admin/product", [ProductsController::class, 'getProducts']);
+Route::get("/admin/category", [CategoriesController::class, 'getCategory']);
+Route::get("/admin/user", [UserController::class, 'getUser']);
+Route::get("/admin/order", [OrderController::class, 'getAllOrder']);
 
-Route::get("/admin", function () {
-    return view("welcome");
-});
-Route::get("/admin/danhmuc", [CategoriesController::class, 'getCategory']);
-
-Route::get("/admin/donhang", function () {
-    return view("order");
-});
 
 
 // API

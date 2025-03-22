@@ -21,11 +21,12 @@ import {
 import { concatMap, forkJoin, of } from 'rxjs';
 import { SubcategoriesService } from '../../services/subcategories.service';
 import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CardProductComponent, RouterLink, RouterLinkActive],
+  imports: [CardProductComponent, RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
@@ -37,6 +38,12 @@ export class ProductComponent
   index: number = 8;
   check: boolean = true;
   total: number = 0;
+
+  optionPrice: any[] = [
+    [0, 350000],
+    [350000, 750000],
+    [750000, 9999999],
+  ];
 
   isClickFilterPrice: any[] = [];
 
@@ -81,53 +88,30 @@ export class ProductComponent
         concatMap((queryParams: any) => {
           return this.productService.getProduct().pipe(
             concatMap((products: any) => {
-              if (
-                queryParams.min &&
-                queryParams.max &&
-                !queryParams.subcategories
-              ) {
-                const data = products.filter(
+              let data = products.filter(
+                (product: any) => product.categories_id == queryParams.category
+              );
+
+              if (queryParams.min && queryParams.max) {
+                data = data.filter(
                   (product: any) =>
-                    product.categories_id == queryParams.category &&
                     product.price >= queryParams.min &&
                     product.price <= queryParams.max
                 );
-                this.total = data.length;
-                return of(data.slice(0, this.index));
-              } else if (
-                queryParams.subcategories &&
-                !queryParams.min &&
-                !queryParams.max
-              ) {
-                const data = products.filter(
-                  (product: any) =>
-                    product.categories_id == queryParams.category &&
-                    product.subcategories_id == queryParams.subcategories
-                );
-                this.total = data.length;
-                return of(data.slice(0, this.index));
-              } else if (
-                queryParams.min &&
-                queryParams.max &&
-                queryParams.subcategories
-              ) {
-                const data = products.filter(
-                  (product: any) =>
-                    product.categories_id == queryParams.category &&
-                    product.price >= queryParams.min &&
-                    product.price <= queryParams.max &&
-                    product.subcategories_id == queryParams.subcategories
-                );
-                this.total = data.length;
-                return of(data.slice(0, this.index));
-              } else {
-                const data = products.filter(
-                  (product: any) =>
-                    product.categories_id == queryParams.category
-                );
-                this.total = data.length;
-                return of(data.slice(0, this.index));
               }
+              if (queryParams.subcategories) {
+                data = data.filter(
+                  (product: any) =>
+                    product.subcategories_id == queryParams.subcategories
+                );
+              }
+
+              this.total = data.length;
+              const slicedData = data.slice(0, this.index);
+
+              this.check = this.total > slicedData.length;
+
+              return of(slicedData);
             })
           );
         })
@@ -135,10 +119,6 @@ export class ProductComponent
       .subscribe((data: any) => {
         this.products = data;
         Swal.close();
-
-        if (this.total === data.length) {
-          this.check = false;
-        }
       });
   }
 
@@ -158,11 +138,13 @@ export class ProductComponent
           );
         })
       )
-      .subscribe((data: any) => (this.subcategory = data));
+      .subscribe((data: any) => {
+        this.subcategory = data;
+      });
   }
 
-  filterPrice(min: number, max: number, url: string) {
-    if (this.router.url.includes(`&min=${min}&max=${max}`)) {
+  filterPrice(event: any) {
+    if (!event.target.value) {
       this.router
         .navigate([], {
           relativeTo: this.router.routerState.root,
@@ -170,9 +152,11 @@ export class ProductComponent
           queryParamsHandling: 'merge',
         })
         .then(() => {
-          window.location.reload();
+          this.getProduct();
         });
     } else {
+      const [min, max] = event.target.value.replace(' ', '').split(',');
+
       this.router
         .navigate([], {
           relativeTo: this.router.routerState.root,
@@ -185,8 +169,10 @@ export class ProductComponent
     }
   }
 
-  filterSubCategory(subcategories: number, url: string) {
-    if (this.router.url.includes(`&subcategories=${subcategories}`)) {
+  filterSubCategory(event: any) {
+    const subcategories = event.target.value;
+
+    if (!subcategories) {
       this.router
         .navigate([], {
           relativeTo: this.router.routerState.root,
@@ -194,7 +180,7 @@ export class ProductComponent
           queryParamsHandling: 'merge',
         })
         .then(() => {
-          window.location.reload();
+          this.getProduct();
         });
     } else {
       this.router

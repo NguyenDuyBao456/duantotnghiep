@@ -256,6 +256,13 @@ class PaymentController extends Controller
         $resp = file_get_contents($config["endpoint"]."?".http_build_query($params));
         $result = json_decode($resp, true);
 
+        if (isset($result['return_code']) && $result['return_code'] == -217) {
+            // \Log::error("ZaloPay Error: Thẻ ATM bị tạm dừng (Mã lỗi -217)");
+
+            // Trả về thông báo lỗi và không redirect
+            die();
+        }
+
         return response()->json($result);
     }
 }

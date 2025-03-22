@@ -18,15 +18,6 @@ class UserController extends Controller
     use HasApiTokens,Notifiable;
 
 
-    // public function register(Request $request)
-    // {
-    //     $user = User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-    //     return response()->json($user);
-    // }
 
 
     public function login(Request $request)
@@ -97,5 +88,10 @@ class UserController extends Controller
 
         Mail::to($request->email)->send(new RegisterMail($createUser));
         return response()->json(['message' => 'Chúng tôi đã gửi thông tin tài khoản qua email của bạn, vui lòng kiểm tra email']);
+    }
+
+    public function getUser() {
+        $users = User::all();
+        return view("user", compact('users'));
     }
 }

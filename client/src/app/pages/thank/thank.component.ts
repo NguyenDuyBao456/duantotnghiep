@@ -70,6 +70,8 @@ export class ThankComponent implements OnInit {
         formData.append('apptransid', queryParams.apptransid);
 
         this.paymentService.zalopayReturn(formData).subscribe((data: any) => {
+          console.log(data);
+
           this.createOrder(3);
         });
       }

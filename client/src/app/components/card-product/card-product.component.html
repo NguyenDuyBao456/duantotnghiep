@@ -1,29 +1,19 @@
-<div class="featured__item">
-  <div class="featured__item__pic">
-    <img
-      class="imgg"
-      src="http://localhost:8000/img/{{ product.img }}"
-      alt="Crab Pool Security"
-      width="100%"
-      height="100%"
-    />
-    <!-- <ul class="featured__item__pic__hover">
-      <li>
-        <a href="#"><i class="fa fa-eye"></i></a>
-      </li>
-      <li>
-        <a (click)="addToCart()"><i class="fa fa-shopping-cart"></i></a>
-      </li>
-    </ul> -->
+<a href="/details/{{ product.id }}" class="card-product text-decoration-none">
+  <div class="card-product-inner">
+    <div class="card-product-pic">
+      <img
+        class="img-fluid"
+        src="http://localhost:8000/img/{{ product.img }}"
+        alt="{{ product.name }}"
+      />
+      <div class="glow-border"></div>
+      <div class="reflection"></div>
+    </div>
+    <div class="card-product-text">
+      <p class="text-truncate fw-bold golden-text">
+        {{ product.name }}
+      </p>
+      <h5 class="text-diamond">{{ product.price | number }} đ</h5>
+    </div>
   </div>
-  <div class="featured__item__text">
-    <h6>
-      <a
-        href="/details/{{ product.id }}"
-        class="text-decoration-none text-truncate d-block w-100"
-        >{{ product.name }}</a
-      >
-    </h6>
-    <h5>{{ product.price | number }} đ</h5>
-  </div>
-</div>
+</a>

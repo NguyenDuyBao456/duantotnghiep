@@ -19,3 +19,32 @@
 .w-20 {
   width: 20%;
 }
+
+/*
+<!-- <ul
+class="list-unstyled d-flex flex-column"
+style="height: 300px; overflow: auto"
+>
+@for (item of subcategory; track $index) {
+<li
+  class="p-2 li-hover"
+  [attr.fc]="'subcategories=' + item.id"
+  (click)="filterSubCategory(item.id, 'subcategories=' + item.id)"
+  #category
+>
+  {{ item.name }}
+</li>
+}
+</ul> --> */
+
+/*
+<li
+              class="p-2 li-hover"
+              fr="min=750000&max=9999999999"
+              (click)="
+                filterPrice(750000, 9999999999, 'min=750000&max=9999999999')
+              "
+              #price
+            >
+              Trên 750.000đ
+            </li> */

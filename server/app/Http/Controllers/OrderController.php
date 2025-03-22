@@ -68,6 +68,7 @@ class OrderController extends Controller
 
 
     public function getAllOrder() {
-
+        $orders = Order::all();
+        return view("order", compact('orders'));
     }
 }
