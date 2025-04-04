@@ -4,6 +4,7 @@ import { SubcategoriesService } from '../../services/subcategories.service';
 import { concatMap, forkJoin, of } from 'rxjs';
 import { CartService } from '../../services/cart.service';
 import { UserService } from '../../services/user.service';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,18 +20,26 @@ export class NavbarComponent implements OnInit {
     ? JSON.parse(localStorage.getItem('token') || '')
     : '';
   user: any;
+  favorite: any;
 
   ngOnInit(): void {
     this.getUser();
     this.getCategory();
     this.getCart();
+
+    this.favoriteService.favoriteUpdated.subscribe(() => {
+      this.getFavorite();
+    });
+
+    this.getFavorite();
   }
 
   constructor(
     private categoryService: CategoryService,
     private subCategoriesService: SubcategoriesService,
     private cartService: CartService,
-    private userService: UserService
+    private userService: UserService,
+    private favoriteService: FavoriteService
   ) {}
 
   getUser() {
@@ -44,6 +53,16 @@ export class NavbarComponent implements OnInit {
           this.cart = data.length;
         }
       });
+    });
+  }
+
+  getFavorite() {
+    this.userService.decoded(this.token).subscribe((data: any) => {
+      this.favoriteService
+        .getFavoriteUser(data.id)
+        .subscribe((favorite: any) => {
+          this.favorite = favorite;
+        });
     });
   }
 

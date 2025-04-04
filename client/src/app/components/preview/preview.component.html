@@ -1,0 +1,60 @@
+<div
+  style="
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); /* 30% đen, rõ hơn */
+
+    position: fixed;
+    z-index: 999;
+    top: 0;
+  "
+>
+  <div class="review-modal">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="review-container">
+      <div class="review-header">
+        <h3>Viết đánh giá</h3>
+        <button (click)="closePreview()" class="close-btn">×</button>
+      </div>
+
+      <hr />
+
+      <div class="review-body">
+        <div class="form-group">
+          <label> Bạn cảm thấy sản phẩm này như thế nào? </label>
+          <div class="star-rating">
+            @for (item of [1,2,3,4,5]; track $index) {
+            <i
+              #rating
+              (click)="clickRating($index)"
+              class="fa-solid fa-star"
+              style="color: lightgray"
+            ></i>
+            }
+          </div>
+          <input type="hidden" formControlName="rating" />
+        </div>
+
+        <div class="form-group">
+          <label for="content">Nội dung đánh giá</label>
+          <textarea
+            id="content"
+            formControlName="content"
+            placeholder="Nhập nội dung"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="review-footer">
+        <button
+          type="submit"
+          [disabled]="!form.valid"
+          class="btn btn-warning text-light fw-bold w-50 {{
+            !form.valid && 'opacity-50'
+          }}"
+        >
+          Gửi đánh giá
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

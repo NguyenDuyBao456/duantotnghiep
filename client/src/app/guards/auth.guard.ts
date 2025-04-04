@@ -25,11 +25,11 @@ export const authGuard: CanActivateFn = async (route, state) => {
       Swal.close();
       return true;
     } else {
-      location.href = '/';
+      location.href = '/login';
       return false;
     }
   } catch (error) {
-    location.href = '/';
+    location.href = '/login';
     return false;
   }
 };

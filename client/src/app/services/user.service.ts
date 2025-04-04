@@ -27,4 +27,8 @@ export class UserService {
       },
     });
   }
+
+  getUser() {
+    return this.http.get('http://localhost:8000/api/user');
+  }
 }

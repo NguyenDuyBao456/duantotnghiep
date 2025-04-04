@@ -1,3 +1,6 @@
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+
+
 <div class="g-sidenav-show  bg-gray-100">
     @include("navbar")
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg " style="overflow-y: auto">
@@ -36,8 +39,6 @@
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ngày đặt</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tổng tiền</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Trạng thái</th>
-                          <th class="text-secondary opacity-7"></th>
-                          <th class="text-secondary opacity-7"></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -62,23 +63,18 @@
                                 <p class="text-xs font-weight-bold mb-0 ">{{number_format($order['amount'], 0, ',', '.')}}</p>
                               </td>
                               <td>
-                                <p class="
+                                <button class="btn
                                     @switch($order['status'])
-                                        @case('Đang xử lý') badge bg-danger  @break
-                                        @case('Đang giao') badge bg-warning @break
-                                        @case('Đã giao') badge-success  @break
+                                        @case('Chờ xác nhận') bg-secondary text-white @break
+                                        @case('Đang xử lý') bg-danger text-white @break
+                                        @case('Đang giao') bg-warning text-white @break
+                                        @case('Đã giao') bg-success text-white @break
+                                        @default bg-light
                                     @endswitch
-                                text-xs font-weight-bold mb-0 ">{{$order['status']}}</p>
-                              </td>
-                            <td class="align-middle">
-                              <a href="javascript:;" class="text-secondary font-weight-bold " data-toggle="tooltip" data-original-title="Edit user">
-                                <i class="fas fa-edit text-success "></i>
-                              </a>
-                            </td>
-                            <td class="align-middle">
-                                <a href="javascript:;" class="text-secondary font-weight-bold " data-toggle="tooltip" data-original-title="Edit user">
-                                  <i class="fas fa-trash text-danger"></i>
-                                </a>
+                                        " data-bs-toggle="modal" data-bs-target="#orderStatusModal-{{$order->id}}">
+                                        {{$order['status']}}
+                                </button>
+
                               </td>
                           </tr>
                         @endforeach
@@ -94,3 +90,58 @@
         </div>
       </main>
     </div>
+
+    @foreach ($orders as $order)
+    <div class="modal fade" id="orderStatusModal-{{$order->id}}" tabindex="-1" aria-labelledby="orderStatusModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderStatusModalLabel">Cập nhật trạng thái đơn hàng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3 text-center">
+                        <div class="col-md-3">
+                            <div class="status-box bg-secondary text-white p-3 rounded" data-id="{{$order->id}}" data-status='Chờ xác nhận'>Chờ xác nhận</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-box bg-danger text-white p-3 rounded" data-id="{{$order->id}}" data-status="Đang xử lý">Đang xử lý</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-box bg-warning text-white p-3 rounded" data-id="{{$order->id}}" data-status="Đang giao">Đang giao</div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="status-box bg-success text-white p-3 rounded" data-id="{{$order->id}}" data-status="Đã giao">Đã giao</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+
+
+    <script>
+        $(document).ready(function() {
+            $(".status-box").on("click", function() {
+                let orderId = $(this).data("id");
+                let newStatus = $(this).data("status");
+
+                $.ajax({
+                    url: "/api/order/" + orderId,
+                    type: "PUT",
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        status: newStatus
+                    },
+                    success: function(response) {
+                        alert("Cập nhật trạng thái thành công!");
+                        location.reload(); // Reload lại trang để cập nhật UI
+                    },
+                    error: function(e) {
+                        alert("Có lỗi xảy ra, vui lòng thử lại!");
+                    }
+                });
+            });
+        });
+    </script>

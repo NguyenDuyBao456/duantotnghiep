@@ -1,19 +1,65 @@
 <a href="/details/{{ product.id }}" class="card-product text-decoration-none">
-  <div class="card-product-inner">
-    <div class="card-product-pic">
+  <div
+    class="text-center p-3 shadow-sm border rounded"
+    style="height: max-content"
+  >
+    <div class="card-product-pic position-relative">
       <img
         class="img-fluid"
         src="http://localhost:8000/img/{{ product.img }}"
         alt="{{ product.name }}"
       />
-      <div class="glow-border"></div>
-      <div class="reflection"></div>
     </div>
-    <div class="card-product-text">
-      <p class="text-truncate fw-bold golden-text">
+    <div class="card-product-text mt-3">
+      <div class="d-flex justify-content-center align-items-center mb-2">
+        @for (item of star; track $index) { @if (item === 0) {
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            fill="gold"
+            points="12,2 15,10 23,10 17,15 19,22 12,18 5,22 7,15 1,10 9,10"
+          />
+        </svg>
+        } @else if (item === 1) {
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            fill="lightgray"
+            points="12,2 15,10 23,10 17,15 19,22 12,18 5,22 7,15 1,10 9,10"
+          />
+        </svg>
+        } @else if(item === 2) {
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="halfGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="50%" stop-color="gold" />
+              <stop offset="50%" stop-color="lightgray" />
+            </linearGradient>
+          </defs>
+          <polygon
+            fill="url(#halfGradient)"
+            points="12,2 15,10 23,10 17,15 19,22 12,18 5,22 7,15 1,10 9,10"
+          />
+        </svg>
+        } }
+      </div>
+      <p class="fw-bold text-warning text-truncate text-uppercase small">
         {{ product.name }}
       </p>
-      <h5 class="text-diamond">{{ product.price | number }} đ</h5>
+      <h5 class="text-dark fw-bold">{{ product.price | number }} đ</h5>
     </div>
   </div>
 </a>

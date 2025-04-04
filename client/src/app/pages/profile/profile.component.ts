@@ -22,9 +22,14 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   getUser() {
-    this.userService.decoded(this.token).subscribe((data: any) => {
-      this.user = data;
-    });
+    this.userService.decoded(this.token).subscribe(
+      (data: any) => {
+        this.user = data;
+      },
+      (error: any) => {
+        location.href = '/login';
+      }
+    );
   }
 
   logout() {

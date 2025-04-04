@@ -153,6 +153,7 @@ export class ProductComponent
         })
         .then(() => {
           this.getProduct();
+          this.index = 8;
         });
     } else {
       const [min, max] = event.target.value.replace(' ', '').split(',');
@@ -181,6 +182,7 @@ export class ProductComponent
         })
         .then(() => {
           this.getProduct();
+          this.index = 8;
         });
     } else {
       this.router

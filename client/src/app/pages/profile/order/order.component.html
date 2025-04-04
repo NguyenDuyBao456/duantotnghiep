@@ -28,7 +28,15 @@
         <td>{{ order.datetime }}</td>
         <td>{{ order.amount }}</td>
         <td>
+          @switch (order.status) { @case ('Chờ xác nhận') {
+          <span class="badge badge-secondary m-0">{{ order.status }}</span>
+          } @case ('Đang xử lý') {
           <span class="badge badge-danger m-0">{{ order.status }}</span>
+          } @case('Đang giao') {
+          <span class="badge badge-warning m-0">{{ order.status }}</span>
+          } @case ('Đã giao') {
+          <span class="badge badge-success m-0">{{ order.status }}</span>
+          } }
         </td>
       </tr>
 

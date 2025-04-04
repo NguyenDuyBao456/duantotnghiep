@@ -14,5 +14,7 @@ class Order extends Model
     protected $fillable = ['id_user', 'id_pttt', 'id_ptvc', 'status', 'datetime', 'amount', 'name', 'phone', 'address'];
 
 
+
+
 }
 

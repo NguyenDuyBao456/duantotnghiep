@@ -13,6 +13,7 @@ import { guestGuard } from './guards/guest.guard';
 import { ThankComponent } from './pages/thank/thank.component';
 import { OrderComponent } from './pages/profile/order/order.component';
 import { OrderdetailsComponent } from './pages/orderdetails/orderdetails.component';
+import { FavoriteComponent } from './pages/favorite/favorite.component';
 
 export const routes: Routes = [
   {
@@ -77,5 +78,10 @@ export const routes: Routes = [
   {
     path: 'orderdetails/:id',
     component: OrderdetailsComponent,
+  },
+  {
+    path: 'favorite',
+    component: FavoriteComponent,
+    canActivate: [authGuard],
   },
 ];

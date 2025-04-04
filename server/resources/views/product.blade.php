@@ -25,8 +25,8 @@
               <h6>Danh sách sản phẩm</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
+              <div class="table-responsive p-0" style="overflow-x: hidden">
+                <table class="table align-items-center mb-0" >
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hình ảnh</th>
@@ -55,7 +55,7 @@
                           {{-- <p class="text-xs text-secondary mb-0">Developer</p> --}}
                         </td>
                         <td >
-                            <p class="text-xs font-weight-bold mb-0 text-wrap" style="width: 400px">{{$product['description']}}</p>
+                            <p class="text-xs font-weight-bold mb-0 text-wrap" style="width: 350px">{{$product['description']}}</p>
                             {{-- <p class="text-xs text-secondary mb-0">Developer</p> --}}
                           </td>
 

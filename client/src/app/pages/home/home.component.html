@@ -106,10 +106,15 @@
         </h3>
       </div>
     </div>
-    <div class="row">
+
+    <div class="row g-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
       @for (prod of outstanding; track $index) {
-      <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-        <app-card-product [product]="prod"></app-card-product>
+      <div class="col">
+        <div
+          class="card text-light shadow-lg border-0 rounded-4 overflow-hidden position-relative product-card"
+        >
+          <app-card-product [product]="prod"></app-card-product>
+        </div>
       </div>
       }
     </div>
@@ -165,10 +170,21 @@
         </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         @for (prod of product.products; track $index) {
         <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
           <app-card-product [product]="prod"></app-card-product>
+        </div>
+        }
+      </div> -->
+      <div class="row g-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+        @for (prod of product.products; track $index) {
+        <div class="col">
+          <div
+            class="card text-light shadow-lg border-0 rounded-4 overflow-hidden position-relative product-card"
+          >
+            <app-card-product [product]="prod"></app-card-product>
+          </div>
         </div>
         }
       </div>

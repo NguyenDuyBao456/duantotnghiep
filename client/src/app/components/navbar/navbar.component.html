@@ -123,6 +123,17 @@
 
               <li>
                 <div class="header-icons">
+                  <a class="shopping-cart cart" href="/favorite"
+                    ><i class="fas fa-heart"></i>
+                    @if (this.favorite && this.favorite.length) {
+                    <p
+                      class="bg-danger text-light count"
+                      style="font-size: 12px"
+                    >
+                      {{ this.favorite.length }}
+                    </p>
+                    }
+                  </a>
                   <a class="shopping-cart cart" href="/cart"
                     ><i class="fas fa-shopping-cart"></i>
                     @if (this.cart) {

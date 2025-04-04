@@ -58,10 +58,9 @@
     } @for (product of products; track $index) {
     <div class="col">
       <div
-        class="card bg-dark text-light shadow-lg border-0 rounded-4 overflow-hidden position-relative product-card"
+        class="card text-light shadow-lg border-0 rounded-4 overflow-hidden position-relative product-card"
       >
         <app-card-product [product]="product"></app-card-product>
-        <!-- <div class="overlay"></div> -->
       </div>
     </div>
     }
@@ -79,25 +78,4 @@
   }
 </div>
 
-<style>
-  .product-card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  .product-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
-  }
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 215, 0, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  .product-card:hover .overlay {
-    opacity: 1;
-  }
-</style>
+<style></style>

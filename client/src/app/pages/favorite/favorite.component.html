@@ -1,0 +1,27 @@
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>Sản phẩm yêu thích</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <div class="row g-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2">
+    @if (favorites && favorites.length === 0) {
+    <p class="text-center w-100 text-danger fw-bold">Không tìm thấy sản phẩm</p>
+    } @for (product of favorites; track $index) {
+    <div class="col">
+      <div
+        class="card text-light shadow-lg border-0 rounded-4 overflow-hidden position-relative product-card"
+      >
+        <app-card-product [product]="product.product"></app-card-product>
+      </div>
+    </div>
+    }
+  </div>
+</div>

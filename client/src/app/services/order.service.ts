@@ -20,4 +20,8 @@ export class OrderService {
   getOrderByID(id: any) {
     return this.http.get(`http://localhost:8000/api/get_order_by_id/${id}`);
   }
+
+  getOrder() {
+    return this.http.get('http://localhost:8000/api/order');
+  }
 }

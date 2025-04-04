@@ -66,9 +66,36 @@ class OrderController extends Controller
         ]);
     }
 
+    public function index() {
+        $orders = Order::all(); // Lấy tất cả đơn hàng
+        $details = OrderDetails::all(); // Lấy tất cả chi tiết đơn hàng
+
+        $ordersWithDetails = $orders->map(function ($order) use ($details) {
+            return [
+                'order' => $order,
+                'details' => $details->where('id_order', $order->id)->values()
+            ];
+        });
+
+        return response()->json($ordersWithDetails);
+    }
+
+
 
     public function getAllOrder() {
-        $orders = Order::all();
+        $orders = Order::all()->reverse(); // Đảo ngược danh sách
         return view("order", compact('orders'));
     }
+
+    public function update(Request $request, $id) {
+        $order = Order::find( $id);
+
+        $order->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json(['message' => 'Cap nhat trang thai thanh cong'], 200);
+    }
+
+
 }
