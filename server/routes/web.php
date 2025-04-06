@@ -24,6 +24,7 @@ Route::get("/admin/product", [ProductsController::class, 'getProducts']);
 Route::get("/admin/category", [CategoriesController::class, 'getCategory']);
 Route::get("/admin/user", [UserController::class, 'getUser']);
 Route::get("/admin/order", [OrderController::class, 'getAllOrder']);
+Route::get("/admin/review", [PreviewController::class, 'getPreview']);
 
 
 // API
@@ -50,12 +51,15 @@ Route::get("/api/decode_token", [UserController::class, 'decoded'])->middleware(
 Route::get("/api/preview/{id_product}", [PreviewController::class, 'index']);
 Route::post("/api/preview", [PreviewController::class, 'create']);
 Route::put("/api/preview/{MaDG}", [PreviewController::class, 'update']);
+Route::delete("/api/preview/{MaDG}", [PreviewController::class, 'destroy']);
 
 
 
 
 // user
 Route::get("/api/user", [UserController::class, 'index']);
+Route::put("/api/user/{id}", [UserController::class, 'update']);
+Route::post("/api/user/password", [UserController::class, 'changePassword']);
 
 
 
@@ -63,7 +67,6 @@ Route::get("/api/user", [UserController::class, 'index']);
 Route::post("/api/zalopay", [PaymentController::class, 'zalopay']);
 Route::post("/api/vnpay", [PaymentController::class, 'vnpay']);
 Route::post("/api/momo", [PaymentController::class,'momo']);
-
 Route::post("/api/vnpay-return", [PaymentController::class, 'vnpayReturn']);
 Route::post("/api/zalopay-return", [PaymentController::class, 'zalopayReturn']);
 

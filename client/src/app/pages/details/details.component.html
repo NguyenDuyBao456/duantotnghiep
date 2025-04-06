@@ -146,27 +146,11 @@
           class="d-flex flex-column justify-content-center align-items-center gap-2"
         >
           <div class="avatar">{{ item.user.name[0] }}</div>
-          <strong class="fs-4"
-            >{{ item.user.name }}
-
-            @if (item.check) {
-            <i
-              class="fas fa-check-circle"
-              style="color: #007bff; font-size: 24px"
-            ></i>
-            }
-          </strong>
+          <strong class="fs-4">{{ item.user.name }} </strong>
         </div>
 
         <!-- Nội dung đánh giá -->
         <div class="review-content">
-          <!-- <div class="d-flex align-items-center">
-            <span class="ms-2 verified"
-              ><i class="fas fa-check-circle"></i> Đã mua</span
-            >
-          </div> -->
-
-          <!-- Sao đánh giá -->
           <div class="stars">
             @for (r of item.rating; track $index) { @if(r === 0) {
             <i class="fas fa-star" style="color: gold"></i>

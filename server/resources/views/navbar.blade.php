@@ -4,6 +4,7 @@
 <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
 
@@ -122,6 +123,30 @@
             <span class="nav-link-text ms-1">Đơn hàng</span>
           </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link  {{Request::is('admin/review') ? 'active' : ''}}" href="/admin/review">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <title>order</title>
+                      <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd">
+                          <g fill="#000000" fill-rule="nonzero">
+                              <!-- Hình tờ đơn hàng -->
+                              <path d="M6,4 C6,2.9 6.9,2 8,2 L34,2 C35.1,2 36,2.9 36,4 L36,38 C36,38.6 35.4,39 34.8,38.8 L30,37 L25.2,38.8 C24.8,39 24.2,39 23.8,38.8 L19,37 L14.2,38.8 C13.8,39 13.2,39 12.8,38.8 L8,37 L7,37 C6.4,37 6,36.6 6,36 L6,4 Z"></path>
+                              <!-- Dòng tiêu đề -->
+                              <rect x="10" y="10" width="22" height="3" rx="1"></rect>
+                              <!-- Dòng nội dung -->
+                              <rect x="10" y="16" width="18" height="3" rx="1"></rect>
+                              <rect x="10" y="22" width="18" height="3" rx="1"></rect>
+                              <rect x="10" y="28" width="10" height="3" rx="1"></rect>
+                              <!-- Dấu check (✔) -->
+                              <path d="M30 18 L26 24 L24 22" stroke="#FFFFFF" stroke-width="2" fill="none"></path>
+                          </g>
+                      </g>
+                  </svg>
+              </div>
+              <span class="nav-link-text ms-1">Đánh giá</span>
+            </a>
+          </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>

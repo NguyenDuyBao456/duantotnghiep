@@ -63,7 +63,7 @@
                                 <p class="text-xs font-weight-bold mb-0 ">{{number_format($order['amount'], 0, ',', '.')}}</p>
                               </td>
                               <td>
-                                <button class="btn
+                                <button  class="btn btnStatus
                                     @switch($order['status'])
                                         @case('Chờ xác nhận') bg-secondary text-white @break
                                         @case('Đang xử lý') bg-danger text-white @break
@@ -71,7 +71,7 @@
                                         @case('Đã giao') bg-success text-white @break
                                         @default bg-light
                                     @endswitch
-                                        " data-bs-toggle="modal" data-bs-target="#orderStatusModal-{{$order->id}}">
+                                        "  data-id='{{$order['id']}}'>
                                         {{$order['status']}}
                                 </button>
 
@@ -86,62 +86,70 @@
               </div>
             </div>
           </div>
-
         </div>
       </main>
     </div>
 
-    @foreach ($orders as $order)
-    <div class="modal fade" id="orderStatusModal-{{$order->id}}" tabindex="-1" aria-labelledby="orderStatusModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content p-3">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="orderStatusModalLabel">Cập nhật trạng thái đơn hàng</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row g-3 text-center">
-                        <div class="col-md-3">
-                            <div class="status-box bg-secondary text-white p-3 rounded" data-id="{{$order->id}}" data-status='Chờ xác nhận'>Chờ xác nhận</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="status-box bg-danger text-white p-3 rounded" data-id="{{$order->id}}" data-status="Đang xử lý">Đang xử lý</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="status-box bg-warning text-white p-3 rounded" data-id="{{$order->id}}" data-status="Đang giao">Đang giao</div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="status-box bg-success text-white p-3 rounded" data-id="{{$order->id}}" data-status="Đã giao">Đã giao</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $(document).ready(function () {
+    const status = [
+        'Chờ xác nhận', 'Đang xử lý', 'Đang giao', 'Đã giao'
+    ];
+
+    $('.btnStatus').on('click', function () {
+        const currentText = $(this).text().trim();
+        const currentIndex = status.indexOf(currentText);
+        const nextStatus = status[currentIndex + 1];
+        const orderId = $(this).data('id');
 
 
-    <script>
-        $(document).ready(function() {
-            $(".status-box").on("click", function() {
-                let orderId = $(this).data("id");
-                let newStatus = $(this).data("status");
+        if(currentIndex + 1 === status.length) {
+            return
+        }
 
+        Swal.fire({
+            text: `Bạn có chắc muốn đổi trạng thái đơn hàng không?`,
+            allowOutsideClick: false,
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy'
+        }).then((result) => {
+            if (result.isConfirmed) {
                 $.ajax({
-                    url: "/api/order/" + orderId,
                     type: "PUT",
+                    url: "/api/order/" + orderId,
                     data: {
-                        _token: "{{ csrf_token() }}",
-                        status: newStatus
+                        _token: "{{ csrf_token() }}", // Chỉ dùng được trong file blade
+                        status: nextStatus
                     },
-                    success: function(response) {
-                        alert("Cập nhật trạng thái thành công!");
-                        location.reload(); // Reload lại trang để cập nhật UI
+                    success: function (response) {
+                        Swal.fire({
+                            text: 'Cập nhật trạng thái đơn hàng thành công',
+                            icon: 'success',
+                            allowOutsideClick: false,
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
                     },
-                    error: function(e) {
-                        alert("Có lỗi xảy ra, vui lòng thử lại!");
+                    error: function () {
+                        Swal.fire({
+                            text: 'Có lỗi xảy ra khi cập nhật',
+                            icon: 'error'
+                        });
                     }
                 });
-            });
+            }
         });
-    </script>
+    });
+});
+
+
+</script>
+
+
+

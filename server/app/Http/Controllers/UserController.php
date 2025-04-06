@@ -94,4 +94,28 @@ class UserController extends Controller
         $users = User::all();
         return view("user", compact('users'));
     }
+
+    public function update(Request $request, string $id) {
+        $user = User::find($id);
+
+        $user->update($request->all());
+        return response()->json(['message' => 'Cập nhật thành công!'], 200);
+    }
+
+    public function changePassword(Request $request) {
+        $user = User::find($request->id);
+
+        if(!Hash::check($request->old, $user->password)) {
+            return response()->json(["message" => "Mật khẩu hiện tại chính xác"], 401);
+        }
+
+
+        $new = Hash::make($request->new);
+
+        $user->update([
+            'password' => $new
+        ]);
+        return response()->json(['message' => 'Đổi mật khẩu thành công!'], 200);
+
+    }
 }

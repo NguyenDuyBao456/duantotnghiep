@@ -219,7 +219,34 @@ export class DetailsComponent implements OnInit {
       location.href = '/login';
       return;
     }
-    this.isOpenPreview = !this.isOpenPreview;
+
+    const id = this.route.snapshot.params['id'];
+
+    this.orderService
+      .getOrder()
+      .pipe(
+        concatMap((orders: any) => {
+          return of(
+            orders
+              .filter((item: any) => item.order.id_user === this.user.id)
+              .map((item: any) => item.details)
+              .flat()
+          );
+        })
+      )
+      .subscribe((data: any) => {
+        if (data.find((item: any) => item.id_product == id)) {
+          this.isOpenPreview = !this.isOpenPreview;
+        } else {
+          Swal.fire({
+            text: 'Bạn chưa mua sản phẩm',
+            icon: 'warning',
+            allowOutsideClick: false,
+          }).then(({ isConfirmed }) => {
+            Swal.close();
+          });
+        }
+      });
   }
 
   receiveMessage(event: any) {

@@ -32,8 +32,6 @@
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ID</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên người dùng</th>
                           <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                          <th class="text-secondary opacity-7"></th>
-                          <th class="text-secondary opacity-7"></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -51,19 +49,6 @@
                                 <p class="text-xs font-weight-bold mb-0 ">{{$user['email']}}</p>
                                 {{-- <p class="text-xs text-secondary mb-0">Developer</p> --}}
                               </td>
-
-
-                            <td class="align-middle">
-                              <a href="javascript:;" class="text-secondary font-weight-bold " data-toggle="tooltip" data-original-title="Edit user">
-                                <i class="fas fa-edit text-success "></i>
-                              </a>
-                            </td>
-                            <td class="align-middle">
-                                <a href="javascript:;" class="text-secondary font-weight-bold " data-toggle="tooltip" data-original-title="Edit user">
-                                  <i class="fas fa-trash text-danger"></i>
-                                </a>
-                              </td>
-                          </tr>
                         @endforeach
 
                       </tbody>

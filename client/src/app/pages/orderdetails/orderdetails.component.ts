@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-orderdetails',
@@ -24,10 +25,17 @@ export class OrderdetailsComponent implements OnInit {
   ) {}
 
   getData() {
+    Swal.fire({
+      didOpen: () => {
+        Swal.showLoading();
+      },
+      allowOutsideClick: false,
+    });
+
     this.route.params.subscribe((params: any) => {
       this.orderService.getOrderByID(params.id).subscribe((data: any) => {
         this.order = data;
-        console.log(this.order);
+        Swal.close();
       });
     });
   }

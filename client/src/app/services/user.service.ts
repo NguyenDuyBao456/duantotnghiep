@@ -31,4 +31,12 @@ export class UserService {
   getUser() {
     return this.http.get('http://localhost:8000/api/user');
   }
+
+  update(data: any, id: any) {
+    return this.http.put(`http://localhost:8000/api/user/${id}`, data);
+  }
+
+  changePassword(data: any) {
+    return this.http.post(`http://localhost:8000/api/user/password`, data);
+  }
 }

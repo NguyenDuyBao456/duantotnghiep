@@ -73,4 +73,6 @@ class DashboardController extends Controller
         $orders = Order::all();
         return view('welcome', compact('products', 'categories', 'users', 'orders'));
     }
+
+
 }

@@ -1,0 +1,123 @@
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000">
+  @if (isOpen) {
+  <svg
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="red"
+    xmlns="http://www.w3.org/2000/svg"
+    (click)="clickOpen()"
+  >
+    <defs>
+      <linearGradient
+        id="grad"
+        x1="0"
+        y1="0"
+        x2="64"
+        y2="64"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#6366F1" />
+        <stop offset="1" stop-color="#8B5CF6" />
+      </linearGradient>
+    </defs>
+    <rect width="64" height="64" rx="16" fill="#f1ac63" />
+
+    <!-- Chat bubble with robot face -->
+    <path
+      d="M16 20C16 17.79 17.79 16 20 16H44C46.21 16 48 17.79 48 20V36C48 38.21 46.21 40 44 40H34L26 46V40H20C17.79 40 16 38.21 16 36V20Z"
+      fill="white"
+    />
+
+    <!-- Eyes -->
+    <circle cx="26" cy="28" r="2" fill="#f1ac63" />
+    <circle cx="38" cy="28" r="2" fill="#f1ac63" />
+
+    <!-- Smile -->
+    <path
+      d="M28 34C29 35.33 30.5 36 32 36C33.5 36 35 35.33 36 34"
+      stroke="#f1ac63"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+
+    <!-- Antenna -->
+    <circle cx="32" cy="10" r="2" fill="white" />
+    <line
+      x1="32"
+      y1="12"
+      x2="32"
+      y2="16"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </svg>
+  }@else {
+
+  <section class="animation">
+    <div>
+      <div class="row d-flex">
+        <div class="col-md-10 col-lg-8 col-xl-6" style="width: 400px">
+          <div class="card">
+            <div
+              class="card-header d-flex justify-content-between align-items-center p-3"
+            >
+              <h5 class="mb-0">Chat</h5>
+              <i class="fas fa-close" (click)="clickOpen()"></i>
+            </div>
+            <div
+              class="card-body d-flex flex-column-reverse"
+              data-mdb-perfect-scrollbar-init
+              style="position: relative; height: 400px; overflow: auto"
+            >
+              <!-- Chatbot messages (bên trái) -->
+              <div class="d-flex">
+                <p
+                  class="small p-2 ms-3 mb-1 rounded-3 bg-secondary-subtle text-start"
+                  style="width: fit-content"
+                >
+                  Hi
+                </p>
+              </div>
+
+              <!-- User messages (bên phải) -->
+              @for (item of [1,2,3,4,5]; track $index) {
+              <div class="d-flex justify-content-end align-items-end mb-4 pt-1">
+                <p
+                  class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
+                  style="width: fit-content"
+                >
+                  Hiii, I'm good.
+                </p>
+              </div>
+              }
+
+              <div class="d-flex justify-content-end align-items-end mb-4 pt-1">
+                <p
+                  class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
+                  style="width: fit-content"
+                >
+                  Hiii, I'm good.
+                </p>
+              </div>
+            </div>
+            <div
+              class="card-footer text-muted d-flex justify-content-start align-items-center p-3"
+            >
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="exampleFormControlInput1"
+                placeholder="Type message"
+              />
+              <a class="ms-3" href="#!"><i class="fas fa-paper-plane"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  }
+</div>

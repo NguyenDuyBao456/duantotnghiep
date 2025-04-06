@@ -22,9 +22,9 @@ class PreviewController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy($MaDG)
     {
-        $review = Preview::find($id);
+        $review = Preview::find($MaDG);
         if (!$review) {
             return response()->json(['message' => 'Không tìm thấy đánh giá'], 404);
         }
@@ -39,6 +39,11 @@ class PreviewController extends Controller
 
         return response()->json(['message' => 'Cập nhật đánh giá thành công!'], 200);
 
+    }
+
+    public function getPreview(){
+        $preview = Preview::all();
+        return view('review', compact("preview"));
     }
 }
 

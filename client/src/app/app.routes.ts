@@ -14,6 +14,7 @@ import { ThankComponent } from './pages/thank/thank.component';
 import { OrderComponent } from './pages/profile/order/order.component';
 import { OrderdetailsComponent } from './pages/orderdetails/orderdetails.component';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
+import { PasswordComponent } from './pages/profile/password/password.component';
 
 export const routes: Routes = [
   {
@@ -68,6 +69,10 @@ export const routes: Routes = [
       {
         path: 'order',
         component: OrderComponent,
+      },
+      {
+        path: 'password',
+        component: PasswordComponent,
       },
     ],
   },
