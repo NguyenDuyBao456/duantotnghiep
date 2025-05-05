@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //
@@ -17,25 +14,6 @@ class ProductsController extends Controller
         return response()->json($products);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
@@ -52,18 +30,28 @@ class ProductsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Products::find($id);
+
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('img'), $imageName); // Lưu ảnh vào thư mục public/img
+            $product->img = $imageName; // Cập nhật tên ảnh trong cơ sở dữ liệu
+        }
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->size = $request->size;
+        $product->description = $request->description;
+
+        $product->save(); // Lưu sản phẩm vào cơ sở dữ liệu
+
+
+        return response()->json(['message' => 'Cập nhật sản phẩm thành công!'], 200);
     }
 
     /**
@@ -71,11 +59,40 @@ class ProductsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Products::find($id);
+        if (!$product) {
+            return response()->json(['message' => 'Không tìm thấy '], 404);
+        }
+        $product->delete();
+        return response()->json(['message' => 'Sản phẩm đã bị xóa!']);
     }
 
     public function getProducts() {
-        $products = Products::all();
+        $products = Products::orderBy('id', 'desc')->paginate(5); // 👈 Đảo ngược theo ID
+
+
         return view("product", compact('products'));
     }
+
+    public function store(Request $request)
+    {
+
+
+
+    $fileName = time() . '.' . $request->img->extension();
+    $request->img->move(public_path('img'), $fileName);
+
+    Products::create([
+        'name' => $request->name,
+        'price' => $request->price,
+        'size' => $request->size,
+        'description' => $request->description,
+        'img' => $fileName,
+        'categories_id' => $request->categories_id,
+        'subcategories_id' => $request->subcategories_id
+    ]);
+
+    return response()->json(['message' => 'Sản phẩm đã được thêm']);
+    }
+
 }

@@ -30,7 +30,8 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Categories::create($request->all());
+        return response()->json(['message' => 'Danh mục đã được thêm']);
     }
 
     /**
@@ -54,7 +55,9 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Categories::find($id);
+        $category->update($request->all());
+        return response()->json(['message' => 'success']);
     }
 
     /**
@@ -62,7 +65,10 @@ class CategoriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Categories::find($id);
+        $category->delete();
+        return response()->json(['message' => 'Danh mục đã bị xóa!']);
+
     }
 
     public function getCategory() {

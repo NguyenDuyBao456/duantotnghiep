@@ -1,27 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'http://localhost:8000/api/order/';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   create(data: any) {
-    return this.http.post(this.apiUrl, data);
+    return this.http.post(this.apiUrl + '/api/order', data);
   }
 
   getOrderByUser(id: any) {
-    return this.http.get(`http://localhost:8000/api/get_order_by_user/${id}`);
+    return this.http.get(`${this.apiUrl}/api/get_order_by_user/${id}`);
   }
 
   getOrderByID(id: any) {
-    return this.http.get(`http://localhost:8000/api/get_order_by_id/${id}`);
+    return this.http.get(`${this.apiUrl}/api/get_order_by_id/${id}`);
   }
 
   getOrder() {
-    return this.http.get('http://localhost:8000/api/order');
+    return this.http.get(`${this.apiUrl}/api/order`);
   }
 }

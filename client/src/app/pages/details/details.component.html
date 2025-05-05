@@ -20,7 +20,7 @@
           class="single-product-img d-flex justify-content-center position-relative overflow-hidden rounded-4 shadow-lg bg-white p-3"
         >
           <img
-            src="http://localhost:8000/img/{{ details.img }}"
+            src="{{ url }}/img/{{ details.img }}"
             alt="{{ details.name }}"
             class="w-75 rounded-3 shadow product-img"
           />
@@ -38,9 +38,11 @@
           >
             {{ details.price | number }} đ
           </p>
+          <p class="text-secondary font-bold">Kích thước: {{ details.size }}</p>
           <p class="text-secondary lead fst-italic">
             {{ details.description }}
           </p>
+
           <div class="single-product-form mt-4">
             <div class="d-flex align-items-center gap-4">
               <input

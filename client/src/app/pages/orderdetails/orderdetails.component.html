@@ -15,7 +15,7 @@
     <div class="card-body p-4">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <h4 class="fw-bold text-primary mb-3">Thông tin khách hàng</h4>
+          <h4 class="fw-bold text-warning mb-3">Thông tin khách hàng</h4>
           <ul class="list-group mb-4">
             <li class="list-group-item">
               <strong>Họ tên:</strong> {{ this.order.order.name }}
@@ -31,7 +31,7 @@
             </li>
           </ul>
 
-          <h4 class="fw-bold text-primary mb-3">Chi tiết đơn hàng</h4>
+          <h4 class="fw-bold text-warning mb-3">Chi tiết đơn hàng</h4>
           <div class="table-responsive">
             <table class="table table-hover table-bordered">
               <thead class="bg-primary text-white">
@@ -47,7 +47,7 @@
                 <tr>
                   <td>{{ $index + 1 }}</td>
                   <td>{{ item.product.name }}</td>
-                  <td>{{ item.product.price }} VNĐ</td>
+                  <td>{{ item.product.price.toLocaleString("vi-VN") }} VNĐ</td>
                   <td>{{ item.qty }}</td>
                 </tr>
                 }
@@ -59,8 +59,8 @@
             class="d-flex justify-content-between align-items-center p-3 mt-4 bg-light rounded shadow-sm"
           >
             <h5 class="fw-bold text-dark">Tổng tiền:</h5>
-            <h2 class="fw-bold text-danger">
-              {{ this.order.order.amount }} VNĐ
+            <h2 class="fw-bold text-warning">
+              {{ this.order.order.amount.toLocaleString("vi-VN") }} VNĐ
             </h2>
           </div>
         </div>

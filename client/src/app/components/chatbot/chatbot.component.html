@@ -71,36 +71,27 @@
               data-mdb-perfect-scrollbar-init
               style="position: relative; height: 400px; overflow: auto"
             >
+              @for (item of chat.reverse(); track $index) {
               <!-- Chatbot messages (bên trái) -->
+              @if (item.send === 'user') {
+              <div class="d-flex justify-content-end align-items-end mb-4 pt-1">
+                <p
+                  class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
+                  style="width: fit-content"
+                >
+                  {{ item.content }}
+                </p>
+              </div>
+              } @else {
               <div class="d-flex">
                 <p
                   class="small p-2 ms-3 mb-1 rounded-3 bg-secondary-subtle text-start"
                   style="width: fit-content"
                 >
-                  Hi
+                  {{ item.content }}
                 </p>
               </div>
-
-              <!-- User messages (bên phải) -->
-              @for (item of [1,2,3,4,5]; track $index) {
-              <div class="d-flex justify-content-end align-items-end mb-4 pt-1">
-                <p
-                  class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
-                  style="width: fit-content"
-                >
-                  Hiii, I'm good.
-                </p>
-              </div>
-              }
-
-              <div class="d-flex justify-content-end align-items-end mb-4 pt-1">
-                <p
-                  class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
-                  style="width: fit-content"
-                >
-                  Hiii, I'm good.
-                </p>
-              </div>
+              } }
             </div>
             <div
               class="card-footer text-muted d-flex justify-content-start align-items-center p-3"
@@ -109,9 +100,13 @@
                 type="text"
                 class="form-control form-control-lg"
                 id="exampleFormControlInput1"
-                placeholder="Type message"
+                placeholder="Nhập tin nhắn"
+                #message
+                (keydown.enter)="sendMessage(message)"
               />
-              <a class="ms-3" href="#!"><i class="fas fa-paper-plane"></i></a>
+              <a href="#" (click)="sendMessage(message)" class="ms-3">
+                <i class="fas fa-paper-plane"></i>
+              </a>
             </div>
           </div>
         </div>

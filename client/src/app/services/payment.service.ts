@@ -1,14 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentService {
+  private apiUrl = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
   zalopay(data: any) {
-    return this.http.post('http://localhost:8000/api/zalopay', data, {
+    return this.http.post(`${this.apiUrl}/api/zalopay`, data, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -16,7 +19,7 @@ export class PaymentService {
   }
 
   vnpay(data: any) {
-    return this.http.post('http://localhost:8000/api/vnpay', data, {
+    return this.http.post(`${this.apiUrl}/api/vnpay`, data, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -24,7 +27,7 @@ export class PaymentService {
   }
 
   momo(data: any) {
-    return this.http.post('http://localhost:8000/api/momo', data, {
+    return this.http.post(`${this.apiUrl}/api/momo`, data, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -32,11 +35,11 @@ export class PaymentService {
   }
 
   vnpayReturn(data: any) {
-    return this.http.post('http://localhost:8000/api/vnpay-return', data);
+    return this.http.post(`${this.apiUrl}/api/vnpay-return`, data);
   }
 
   zalopayReturn(data: any) {
-    return this.http.post('http://localhost:8000/api/zalopay-return', data, {
+    return this.http.post(`${this.apiUrl}/api/zalopay-return`, data, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },

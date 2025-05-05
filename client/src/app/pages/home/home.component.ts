@@ -108,4 +108,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       });
     });
   }
+
+  search(keyword: any) {
+    location.href = `/search/${keyword.value}`;
+  }
 }

@@ -18,6 +18,7 @@ import { PreviewComponent } from '../../components/preview/preview.component';
 import { PreviewService } from '../../services/preview.service';
 import { FavoriteService } from '../../services/favorite.service';
 import { OrderService } from '../../services/order.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-details',
@@ -28,6 +29,7 @@ import { OrderService } from '../../services/order.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DetailsComponent implements OnInit {
+  url: string = environment.apiUrl;
   details: any;
   qty: number = 1;
   related: any;

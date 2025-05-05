@@ -3,11 +3,12 @@ import { OrderService } from '../../services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import Swal from 'sweetalert2';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-orderdetails',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './orderdetails.component.html',
   styleUrl: './orderdetails.component.css',
 })

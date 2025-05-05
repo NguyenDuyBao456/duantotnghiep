@@ -12,7 +12,7 @@
               <div class="  w-100">
                 <div class="input-group">
                   <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control shadow-none" placeholder="Type here...">
+                  <input type="text" class="form-control shadow-none" placeholder="Tìm kiếm...">
                 </div>
               </div>
 

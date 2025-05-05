@@ -53,6 +53,8 @@ export class RegisterComponent implements OnInit {
         });
       },
       (error) => {
+        console.log(error);
+
         this.form.controls['email'].setErrors({ emailExists: true });
         Swal.close();
       }

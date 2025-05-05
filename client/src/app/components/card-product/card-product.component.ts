@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { UserService } from '../../services/user.service';
 import { PreviewService } from '../../services/preview.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-card-product',
@@ -13,6 +14,8 @@ import { PreviewService } from '../../services/preview.service';
   providers: [],
 })
 export class CardProductComponent implements OnInit {
+  url: string = environment.apiUrl;
+
   @Input() product: any;
 
   star: any;

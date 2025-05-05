@@ -87,6 +87,7 @@ export class NavbarComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.category = data;
+        console.log(this.category);
       });
   }
 

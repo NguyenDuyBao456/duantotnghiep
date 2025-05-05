@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ShipService } from '../../services/ship.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -21,6 +22,7 @@ import { ShipService } from '../../services/ship.service';
   styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnInit {
+  url: string = environment.apiUrl;
   cart: any;
   total: number = 0;
 

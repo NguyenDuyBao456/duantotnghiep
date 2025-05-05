@@ -51,7 +51,7 @@
                         </g>
                     </g>
                 </g>
-            </svg>
+                </svg>
             </div>
             <span class="nav-link-text ms-1">Sản phẩm</span>
           </a>
@@ -60,22 +60,21 @@
           <a class="nav-link  {{Request::is('admin/category') ? 'active' : ''}}" href="/admin/category">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <title>category</title>
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g fill="#000000" fill-rule="nonzero">
-                            <!-- Ô vuông 1 -->
-                            <rect x="2" y="2" width="16" height="16" rx="3"></rect>
-                            <!-- Ô vuông 2 -->
-                            <rect x="24" y="2" width="16" height="16" rx="3"></rect>
-                            <!-- Ô vuông 3 -->
-                            <rect x="2" y="24" width="16" height="16" rx="3"></rect>
-                            <!-- Ô vuông 4 -->
-                            <rect x="24" y="24" width="16" height="16" rx="3"></rect>
+                  <title>category</title>
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-1869.000000, -393.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                      <g transform="translate(1716.000000, 391.000000)">
+                        <g id="category" transform="translate(153.000000, 2.000000)">
+                          <!-- Hình folder -->
+                          <path class="color-background opacity-6" d="M5,12 C4.44771525,12 4,12.4477153 4,13 L4,29 C4,29.5522847 4.44771525,30 5,30 L37,30 C37.5522847,30 38,29.5522847 38,29 L38,13 C38,12.4477153 37.5522847,12 37,12 L20,12 L17,9 L5,9 Z"></path>
+                          <path class="color-background" d="M4,13 L38,13 L38,15 L4,15 L4,13 Z"></path>
                         </g>
+                      </g>
                     </g>
+                  </g>
                 </svg>
+              </div>
 
-            </div>
             <span class="nav-link-text ms-1">Danh mục</span>
           </a>
         </li>
@@ -83,17 +82,22 @@
           <a class="nav-link  {{Request::is('admin/user') ? 'active' : ''}}" href="/admin/user">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <title>user</title>
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g fill="#000000" fill-rule="nonzero">
-                            <!-- Đầu người -->
-                            <circle cx="21" cy="14" r="10"></circle>
-                            <!-- Thân người -->
-                            <path d="M6,40 C6,30 14,24 21,24 C28,24 36,30 36,40" stroke-width="2"></path>
+                  <title>user</title>
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-1869.000000, -493.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                      <g transform="translate(1716.000000, 491.000000)">
+                        <g id="user" transform="translate(153.000000, 2.000000)">
+                          <!-- Vòng tròn đầu -->
+                          <path class="color-background opacity-6" d="M21,21 C26.5228475,21 31,16.5228475 31,11 C31,5.4771525 26.5228475,1 21,1 C15.4771525,1 11,5.4771525 11,11 C11,16.5228475 15.4771525,21 21,21 Z"></path>
+                          <!-- Phần thân -->
+                          <path class="color-background" d="M6,36 C6,29.372583 13.163444,24 21,24 C28.836556,24 36,29.372583 36,36 L36,38 C36,39.1045695 35.1045695,40 34,40 L8,40 C6.8954305,40 6,39.1045695 6,38 L6,36 Z"></path>
                         </g>
+                      </g>
                     </g>
+                  </g>
                 </svg>
-            </div>
+              </div>
+
             <span class="nav-link-text ms-1">Người dùng</span>
           </a>
         </li>
@@ -101,49 +105,49 @@
           <a class="nav-link  {{Request::is('admin/order') ? 'active' : ''}}" href="/admin/order">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <title>order</title>
-                    <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd">
-                        <g fill="#000000" fill-rule="nonzero">
-                            <!-- Hình tờ đơn hàng -->
-                            <path d="M6,4 C6,2.9 6.9,2 8,2 L34,2 C35.1,2 36,2.9 36,4 L36,38 C36,38.6 35.4,39 34.8,38.8 L30,37 L25.2,38.8 C24.8,39 24.2,39 23.8,38.8 L19,37 L14.2,38.8 C13.8,39 13.2,39 12.8,38.8 L8,37 L7,37 C6.4,37 6,36.6 6,36 L6,4 Z"></path>
-                            <!-- Dòng tiêu đề -->
-                            <rect x="10" y="10" width="22" height="3" rx="1"></rect>
-                            <!-- Dòng nội dung -->
-                            <rect x="10" y="16" width="18" height="3" rx="1"></rect>
-                            <rect x="10" y="22" width="18" height="3" rx="1"></rect>
-                            <rect x="10" y="28" width="10" height="3" rx="1"></rect>
-                            <!-- Dấu check (✔) -->
-                            <path d="M30 18 L26 24 L24 22" stroke="#FFFFFF" stroke-width="2" fill="none"></path>
+                  <title>order</title>
+                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g transform="translate(-1869.000000, -593.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                      <g transform="translate(1716.000000, 591.000000)">
+                        <g id="order" transform="translate(153.000000, 2.000000)">
+                          <!-- Hộp chính -->
+                          <path class="color-background opacity-6" d="M6,10 C6,8.8954305 6.8954305,8 8,8 L34,8 C35.1045695,8 36,8.8954305 36,10 L36,34 C36,35.1045695 35.1045695,36 34,36 L8,36 C6.8954305,36 6,35.1045695 6,34 L6,10 Z"></path>
+                          <!-- Nắp hộp -->
+                          <path class="color-background" d="M6,10 L21,21 L36,10 L36,12 L21,23 L6,12 L6,10 Z"></path>
+                          <!-- Chi tiết: đường phân cách đơn hàng -->
+                          <path class="color-background" d="M12,26 L30,26 C30.5522847,26 31,26.4477153 31,27 C31,27.5522847 30.5522847,28 30,28 L12,28 C11.4477153,28 11,27.5522847 11,27 C11,26.4477153 11.4477153,26 12,26 Z"></path>
+                          <path class="color-background" d="M12,30 L24,30 C24.5522847,30 25,30.4477153 25,31 C25,31.5522847 24.5522847,32 24,32 L12,32 C11.4477153,32 11,31.5522847 11,31 C11,30.4477153 11.4477153,30 12,30 Z"></path>
                         </g>
+                      </g>
                     </g>
+                  </g>
                 </svg>
+              </div>
 
-
-            </div>
             <span class="nav-link-text ms-1">Đơn hàng</span>
           </a>
         </li>
         <li class="nav-item">
             <a class="nav-link  {{Request::is('admin/review') ? 'active' : ''}}" href="/admin/review">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                  <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                      <title>order</title>
-                      <g stroke="none" stroke-width="2" fill="none" fill-rule="evenodd">
-                          <g fill="#000000" fill-rule="nonzero">
-                              <!-- Hình tờ đơn hàng -->
-                              <path d="M6,4 C6,2.9 6.9,2 8,2 L34,2 C35.1,2 36,2.9 36,4 L36,38 C36,38.6 35.4,39 34.8,38.8 L30,37 L25.2,38.8 C24.8,39 24.2,39 23.8,38.8 L19,37 L14.2,38.8 C13.8,39 13.2,39 12.8,38.8 L8,37 L7,37 C6.4,37 6,36.6 6,36 L6,4 Z"></path>
-                              <!-- Dòng tiêu đề -->
-                              <rect x="10" y="10" width="22" height="3" rx="1"></rect>
-                              <!-- Dòng nội dung -->
-                              <rect x="10" y="16" width="18" height="3" rx="1"></rect>
-                              <rect x="10" y="22" width="18" height="3" rx="1"></rect>
-                              <rect x="10" y="28" width="10" height="3" rx="1"></rect>
-                              <!-- Dấu check (✔) -->
-                              <path d="M30 18 L26 24 L24 22" stroke="#FFFFFF" stroke-width="2" fill="none"></path>
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <title>review</title>
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-1869.000000, -693.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <g transform="translate(1716.000000, 691.000000)">
+                            <g id="review" transform="translate(153.000000, 2.000000)">
+                              <!-- Khung hộp -->
+                              <path class="color-background opacity-6" d="M6,8 C6,6.89543 6.89543,6 8,6 L34,6 C35.1046,6 36,6.89543 36,8 L36,34 C36,35.1046 35.1046,36 34,36 L8,36 C6.89543,36 6,35.1046 6,34 L6,8 Z"></path>
+                              <!-- Ngôi sao đánh giá -->
+                              <path class="color-background" d="M21,13 L23.09,18.26 L28.82,18.63 L24.18,22.14 L25.64,27.77 L21,24.5 L16.36,27.77 L17.82,22.14 L13.18,18.63 L18.91,18.26 L21,13 Z"></path>
+                              <!-- Thanh phản hồi (feedback) -->
+                              <path class="color-background" d="M12,30 L30,30 C30.5523,30 31,30.4477 31,31 C31,31.5523 30.5523,32 30,32 L12,32 C11.4477,32 11,31.5523 11,31 C11,30.4477 11.4477,30 12,30 Z"></path>
+                            </g>
                           </g>
+                        </g>
                       </g>
-                  </svg>
-              </div>
+                    </svg>
+                  </div>
               <span class="nav-link-text ms-1">Đánh giá</span>
             </a>
           </li>

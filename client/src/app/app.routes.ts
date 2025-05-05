@@ -15,6 +15,7 @@ import { OrderComponent } from './pages/profile/order/order.component';
 import { OrderdetailsComponent } from './pages/orderdetails/orderdetails.component';
 import { FavoriteComponent } from './pages/favorite/favorite.component';
 import { PasswordComponent } from './pages/profile/password/password.component';
+import { SearchComponent } from './pages/search/search.component';
 
 export const routes: Routes = [
   {
@@ -88,5 +89,9 @@ export const routes: Routes = [
     path: 'favorite',
     component: FavoriteComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'search/:keyword',
+    component: SearchComponent,
   },
 ];

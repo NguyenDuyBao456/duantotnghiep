@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\OrderController;
@@ -10,7 +11,7 @@ use App\Http\Controllers\ShipController;
 use App\Http\Controllers\SubcategoriesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PreviewController;
-
+use App\Http\Controllers\UploadController;
 use App\Http\Middleware\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,11 +33,21 @@ Route::get("/admin/review", [PreviewController::class, 'getPreview']);
 // product
 Route::get("/api/sanpham", [ProductsController::class, 'index']);
 Route::get("/api/sanpham/{id}", [ProductsController::class, 'show']);
+Route::put("/api/sanpham/{id}", [ProductsController::class, 'update']);
+Route::post('/api/sanpham', [ProductsController::class, 'store']);
+Route::delete("/api/sanpham/{id}", [ProductsController::class, 'destroy']);
+
 
 
 // category
 Route::get("/api/danhmuc", [CategoriesController::class, 'index']);
 Route::get("/api/danhmuccon", [SubcategoriesController::class, 'index']);
+Route::post("/api/danhmuc", [CategoriesController::class, 'store']);
+Route::post("/api/danhmuccon", [SubcategoriesController::class, 'store']);
+Route::put("/api/danhmuc/{id}", [CategoriesController::class, 'update']);
+Route::put("/api/danhmuccon/{id}", [SubcategoriesController::class, 'update']);
+Route::delete("/api/danhmuc/{id}", [CategoriesController::class, 'destroy']);
+Route::delete("/api/danhmuccon/{id}", [SubcategoriesController::class, 'destroy']);
 
 
 
@@ -87,3 +98,12 @@ Route::get("/api/ship", [ShipController::class, 'index']);
 Route::get("/api/favorite/user/{id_user}", [FavoriteController::class, 'index']);
 Route::post("/api/favorite", [FavoriteController::class, 'store']);
 Route::delete("/api/favorite/{MaYT}",[ FavoriteController::class, 'destroy']);
+
+
+
+// upload
+Route::post("/api/upload", [UploadController::class, 'upload']);
+
+
+// Chat
+Route::post("/api/chat", [ChatController::class, 'chat']);

@@ -35,7 +35,7 @@ export class ProductComponent
 {
   products: any;
   subcategory: any;
-  index: number = 8;
+  index: number = 12;
   check: boolean = true;
   total: number = 0;
 

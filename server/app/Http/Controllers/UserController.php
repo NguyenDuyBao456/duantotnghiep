@@ -30,12 +30,8 @@ class UserController extends Controller
 
         $expiration = now()->addMinutes(15);
 
-
-
         $token = $user->createToken('auth_token');
         $user->tokens()->latest()->first()->update(['expires_at' => $expiration]);
-
-
 
         return response()->json([
             'message' => 'Đăng nhập thành công',
